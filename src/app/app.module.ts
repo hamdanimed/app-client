@@ -6,13 +6,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { PaiementValidationComponent } from './paiement-validation/paiement-validation.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { PaiementSignatureComponent } from './paiement-signature/paiement-signature.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PaiementValidationComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    PaiementSignatureComponent
   ],
   imports: [
     BrowserModule,
