@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./paiement-validation.component.css']
 })
 export class PaiementValidationComponent {
-
+  impayeList:{name:string,value:number}[]=[
+    {name:"Recharge Voix",value:100},
+    // {name:"Recharge Voix",value:100},
+    // {name:"Recharge Voix",value:100},
+    // {name:"Recharge Voix",value:100},
+  ];
 }

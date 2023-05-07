@@ -1,1 +1,43 @@
-<p>paiement-validation works!</p>
+<h3 class="fw-bold text-center mt-5 mb-4">{{"paiement de facture" | uppercase}}</h3>
+<div class="container shadow-lg py-5 px-4 px-sm-5 mb-5 rounded-4">
+    <h4 class="fw-bold">Detail de paiement</h4>
+    <hr class="border border-1 opacity-25 border-dark">
+    <div class="d-flex flex-wrap px-3 pb-4 column-gap-5 row-gap-3 details">
+        <div class="pe-1">
+            <img src="https://picsum.photos/60">
+        </div>
+        <div class="">
+            <p class="fs-5 fw-bold mb-1">Créancier</p>
+            <p class="fs-6 fw-bold m-0 data-color">Maroc Telecom</p>
+        </div>
+        <div class="">
+            <p class="fs-5 fw-bold mb-1">Créance</p>
+            <p class="fs-6 fw-bold m-0 data-color">Recharge Voix</p>
+        </div>
+        <div class="">
+            <p class="fs-5 fw-bold mb-1">Débiteur</p>
+            <p class="fs-6 fw-bold m-0 data-color">Hamdani Mohamed</p>
+        </div>
+    </div>
+    <h4 class="fw-bold">Selectionner pour payer</h4>
+    <hr class="border border-1 opacity-25 border-dark diverder">
+    <div class="px-sm-4">
+        <div class="impaye-container">
+            <div *ngFor="let impaye of impayeList" class="impaye rounded-4 mt-2 py-3 px-4 px-sm-5 d-flex column-gap-5 row-gap-1 flex-wrap justify-content-between ">
+                <p class="fs-6 fw-bold mb-1">{{impaye.name}}</p>
+                <p class="fs-6 fw-bold mb-1">{{impaye.value}} DH</p>
+            </div>
+        </div>
+        <div class="py-3 px-4 px-sm-5 d-flex flex-wrap column-gap-5 row-gap-1 justify-content-end total">
+            <p class="fs-6 fw-bold mb-1">Total :</p>
+            <p class="fs-6 fw-bold mb-1">100 DH</p>
+
+        </div>
+    </div>
+    <div class="d-flex justify-content-sm-end justify-content-center gap-2 pt-5">
+        <button class="btn btn-outline-secondary " type="button">Annuler</button>
+        <button class="btn btn-warning fw-semibold border border-dark border-1" type="button">Valider</button>
+    </div>
+
+    
+</div>
