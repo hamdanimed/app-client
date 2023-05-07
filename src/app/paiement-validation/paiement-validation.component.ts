@@ -1,0 +1,10 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-paiement-validation',
+  templateUrl: './paiement-validation.component.html',
+  styleUrls: ['./paiement-validation.component.css']
+})
+export class PaiementValidationComponent {
+
+}
