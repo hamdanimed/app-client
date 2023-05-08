@@ -9,8 +9,7 @@ export class PaiementSignatureComponent {
   date:Date=new Date(1683495264*1000);
   impayeList:{reference:number,description:string,value:number}[]=[
     {reference:1000000,description:"Recharge Voix",value:100},
-    // {name:"Recharge Voix",value:100},
-    // {name:"Recharge Voix",value:100},
-    // {name:"Recharge Voix",value:100},
+    {reference:1000000,description:"Recharge Voix",value:100},
+    {reference:1000000,description:"Recharge Voix",value:100},
   ];
 }

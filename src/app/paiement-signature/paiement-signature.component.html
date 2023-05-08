@@ -25,19 +25,30 @@
     </div>
     <h4 class="fw-bold">Recapulatif des informations saisies</h4>
     <hr class="border border-1 opacity-25 border-dark diverder">
-    <div class="px-sm-4">
-        <div class="impaye-container">
-            <div *ngFor="let impaye of impayeList" class="impaye rounded-4 mt-2 py-3 px-4 px-sm-5 d-flex column-gap-5 row-gap-1 flex-wrap justify-content-between ">
-                <p class="fs-6 fw-bold mb-1">{{impaye.reference}}</p>
-                <p class="fs-6 fw-bold mb-1">{{impaye.description}}</p>
-                <p class="fs-6 fw-bold mb-1">{{impaye.value}} DH</p>
-            </div>
-        </div>
-        <div class="py-3 px-4 px-sm-5 d-flex flex-wrap column-gap-5 row-gap-1 justify-content-end total">
-            <p class="fs-5 fw-bold mb-1">Total :</p>
-            <p class="fs-5 fw-bold mb-1">100 DH</p>
-
-        </div>
+    <div class="table-responsive">
+        <table class="table table-hover text-center impaye px-sm-4 rounded-4">
+            <thead>
+                <tr>
+                    <th>Reference</th>
+                    <th>Description</th>
+                    <th>Prix TTC</th>
+                </tr>
+            </thead>
+            <tbody class="">
+                <tr *ngFor="let impaye of impayeList">
+                    <td class="fw-semibold">{{impaye.reference}}</td>
+                    <td class="fw-semibold">{{impaye.description}}</td>
+                    <td class="fw-semibold">{{impaye.value}} DH</td>
+                </tr>
+            </tbody>
+            <tfoot class="">
+                <tr>
+                    <th></th>
+                    <th class="text-center">Total:</th>
+                    <th>100 DH</th>
+                </tr>
+            </tfoot>
+        </table>
     </div>
     <div class="d-flex justify-content-sm-end justify-content-center gap-2 pt-5">
         <a class="btn btn-outline-secondary " role="button" type="button">Abondonner la transaction</a>
