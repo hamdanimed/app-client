@@ -28,7 +28,7 @@
 .impaye{
     background-color: #ebebebdf;
 }
-.table > :not(caption) > * > th {
+.table > :not(caption) > * > * {
     padding: 1rem !important;
 }
 
