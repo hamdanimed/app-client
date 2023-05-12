@@ -1,0 +1,98 @@
+.card{
+    width: 732px ;
+    height: 430px;
+    border: none !important;
+    box-shadow: 0px 4px 27px rgba(0, 0, 0, 0.04), 0px 4px 62px 17px rgba(0, 0, 0, 0.07);
+  }
+.card-body{
+    padding: 0px;
+}
+
+.w-100 {
+    width: 80%!important;
+}
+.span-creanciers{
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-weight: medium ;
+  font-size: 1 rem;
+  color: #333;
+}  
+.row{
+    text-align: center;
+}
+.photo-gallery {
+    max-width: 730px; /* ou toute autre largeur souhaitée */
+    max-height: 700px; /* ou toute autre hauteur souhaitée */
+}
+/* Effet sur les images lorsqu'elles sont sélectionnées */
+.image-info {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    display: inline-block;
+    height: auto;
+
+  }
+  .image-info img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .photo-gallery .col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+  .image-info img {
+    transition: all 0.3s ease-in-out;
+  }
+  .image-info:hover:before {
+    opacity: 1;
+  }
+  
+  .image-info:hover img {
+    transform: scale(1.1);
+  }
+  
+  /* Style pour la sélection de la photo */
+  .ekko-lightbox .modal-header,
+  .ekko-lightbox .modal-footer {
+    display: none;
+  }
+  .ekko-lightbox .modal-dialog {
+    max-width: 80vw;
+    margin: auto;
+  }
+  .ekko-lightbox .modal-body {
+    padding: 0;
+  }
+  .ekko-lightbox .ekko-lightbox-container {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ekko-lightbox .ekko-lightbox-content {
+    max-height: 100%;
+    max-width: 100%;
+  }
+  
+ 
+  @media (max-width: 768px) {
+    .formulaire h5{
+      width: 100% !important;
+    }
+    .card{
+      width: 90% ;
+      height: 430px;
+    }
+  }
+  @media (max-width: 425px) {
+    .card{
+  
+      height: 430px;
+    }
+  }
