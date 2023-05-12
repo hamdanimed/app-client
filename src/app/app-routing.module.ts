@@ -4,11 +4,15 @@ import { RouterModule,Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PaiementValidationComponent } from './paiement-validation/paiement-validation.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ListeImpayesComponent } from './liste-impayes/liste-impayes.component';
+import { FormulaireCreanceComponent } from './formulaire-creance/formulaire-creance.component';
 
 const routes: Routes=[
   { path:'',pathMatch:'full',redirectTo:'paiement-validation' },
   { path:'paiement-validation',component:PaiementValidationComponent },
-  { path: '**', pathMatch: 'full', component: PagenotfoundComponent }
+  { path:'liste-impayes',component:ListeImpayesComponent},
+  { path:'formulaire-creance',component:FormulaireCreanceComponent},
+  { path: '**', pathMatch: 'full', component: PagenotfoundComponent },
 
 ]
 
