@@ -1,0 +1,56 @@
+.card{
+    width: 732px ;
+    height: 430px;
+    border: none !important;
+    box-shadow: 0px 4px 27px rgba(0, 0, 0, 0.04), 0px 4px 62px 17px rgba(0, 0, 0, 0.07);
+  }
+  .formulaire h5{
+    font-weight: bold;
+  }
+  .form-control:focus{
+    box-shadow: none;
+    border:1px solid #ced4da;
+  }
+  .button-place{
+    margin-right: 50px;
+    margin-bottom: 20px;  }
+  .button{
+    transition: .2s all ease-in-out;
+    font-weight: 500;
+  }
+  .bg-secondary {
+    background-color: #6c757d; /* couleur de fond de la liste */
+  }
+  .button:hover,
+  .button:focus{
+    color: #000;
+    background-color: #FFC84E;
+    border-color: #000;
+  
+  }
+  @media (max-width: 768px) {
+    .formulaire h5{
+      width: 100% !important;
+    }
+    
+    .button-place{
+      margin-bottom:  20px;
+      margin-right: 0px;
+
+      text-align: center !important;
+    }
+    .card{
+      width: 90% ;
+      height: 430px;
+    }
+  }
+  @media (max-width: 425px) {
+    .card{
+  
+      height: 430px;
+    }
+    .button-style{
+
+      text-align: center !important;
+    }
+  }

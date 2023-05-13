@@ -1,0 +1,46 @@
+<div class="formulaire d-flex align-items-center  flex-column  mt-5 ">
+    <h5 class=" text-center">Choisir votre créancier</h5>
+    <!-- card  -->
+    <div class="card mt-3 " >
+        <div class="card-body ">
+            <span class="d-inline-block border p-2 span-creanciers">Liste des créanciers</span>
+            <div class="select-category mt-4 p-2">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Categories</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <!-- Gallery -->
+            <div class="row p-2 photo-gallery mt-4" style="max-height: 250px; overflow-y: auto;">
+                <div class="col-lg-4 col-md-12 mb-4 mb-lg-0" *ngFor="let image of images">
+                  <div class="image-info">
+                    <a href="{{ image.url }}" data-toggle="lightbox" data-gallery="example-gallery" data-title="{{ image.title }}">
+                      <img src="{{ image.url }}" class="w-100 shadow-1-strong rounded mb-4 lightbox" alt="{{ image.title }}" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+            
+        </div>
+    </div>
+</div>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Lightbox -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+
+<script>
+    $(document).on("click", '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+            alwaysShowClose: true
+        });
+    });
+</script>

@@ -10,6 +10,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { PaiementSignatureComponent } from './paiement-signature/paiement-signature.component';
 import { FormulaireCreanceComponent } from './formulaire-creance/formulaire-creance.component';
 import { ListeImpayesComponent } from './liste-impayes/liste-impayes.component';
+import { ListeCreancesComponent } from './liste-creances/liste-creances.component';
+import { ListeCreanciersComponent } from './liste-creanciers/liste-creanciers.component';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { ListeImpayesComponent } from './liste-impayes/liste-impayes.component';
     PaiementSignatureComponent,
     FormulaireCreanceComponent,
     ListeImpayesComponent,
+    ListeCreancesComponent,
+    ListeCreanciersComponent,
   ],
   imports: [
     BrowserModule,

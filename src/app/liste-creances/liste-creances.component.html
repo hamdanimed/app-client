@@ -1,0 +1,22 @@
+<div class="formulaire d-flex align-items-center flex-column mt-5">
+    <h5 class="text-center mb-4">Choisir une créance</h5>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title text-center py-3 my-3"></h5>
+            <ul class="creances-liste mx-3 bg-light" style="max-height: 250px; overflow-y: auto;">
+                <li *ngFor="let creance of creances" class="form-check mb-3 d-flex align-items-center gap-2">
+                  <input class="form-check-input" type="radio" name="creance" [id]="'creance' + creance.id" [value]="creance.id">
+                  <label class="form-check-label" [for]="'creance' + creance.id">
+                    {{ creance.name }}
+                  </label>
+                </li>
+              </ul>
+        </div>
+
+        <div class="button-place text-end p-1 pt-2">
+            <a href="#" class="btn btn-secondary me-2">Annuler</a>
+            <a href="#" class="btn btn-primary">Valider</a>
+        </div>
+    </div>
+</div>
