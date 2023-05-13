@@ -1,0 +1,53 @@
+ <div class="list-title d-flex align-items-center  flex-column  mt-5 ">
+  <h5 class=" text-center">LISTE DES IMPAYES</h5>
+  <!-- card--->
+  <div class="card mt-3 " >
+    <div class="card-body" >
+      <ul class="creance-list mt-5 px-4 py-1  "style="height: 280px; overflow-y:auto" >
+        <li class="form-check list-position my-2  " style="display: flex; align-items: center; gap: 25px;" *ngFor="let Imp of ImpayesList">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <div class="creance-item row "  >
+            <span class="creance-date col-md-3 p-0"> {{Imp.date}}</span>
+            <span class="creance-name  col-md-4 p-0">{{Imp.name}}</span>
+            <span class="creance-price attribute p-0 col-md-5 text-md-end text-sm-start ">{{Imp.price}}</span>
+          </div>
+        </li>
+      </ul>
+      <div class="button-place text-end pe-1 mt-5">
+        <a href="#" class="btn btn-outline-secondary me-2 button">annuler</a>
+        <a href="#" class="btn btn-outline-secondary me-3  button">payer</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card">
+        <div class="card-body" style="max-height: 200px; overflow-y: auto;">
+          <div class="list-group">
+            <a href="#" class="list-group-item">Item 1</a>
+            <a href="#" class="list-group-item">Item 2</a>
+            <a href="#" class="list-group-item">Item 3</a>
+            <a href="#" class="list-group-item">Item 1</a>
+            <a href="#" class="list-group-item">Item 2</a>
+            <a href="#" class="list-group-item">Item 3</a>
+            <a href="#" class="list-group-item">Item 1</a>
+            <a href="#" class="list-group-item">Item 2</a>
+            <a href="#" class="list-group-item">Item 3</a>
+            <a href="#" class="list-group-item">Item 1</a>
+            <a href="#" class="list-group-item">Item 2</a>
+            <a href="#" class="list-group-item">Item 3</a>
+            <!-- Add more list items
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ -->

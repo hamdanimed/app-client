@@ -1,0 +1,93 @@
+.list-title h5{
+  font-weight: bold;
+}
+.card{
+  width: 732px ;
+  height: 460px;
+  border: none !important;
+  box-shadow: 0px 4px 27px rgba(0, 0, 0, 0.04), 0px 4px 62px 17px rgba(0, 0, 0, 0.07);
+}
+.card-body{
+
+}
+
+.creance-list{
+
+  list-style-type: none;
+/*   padding-left: 1.5em;
+*/   /*20 */
+/*   align-items: center;
+ */  flex-direction: column;
+
+}
+.list-position{
+  
+}
+
+.creance-item {
+  /* position: relative; */
+   /*margin-bottom: 8px;*/
+  background-color: #efefef;
+  border-radius: 8px;
+  padding: 5px 10px;
+  width: 100%;
+}
+
+
+
+
+.creance-date,
+.creance-name,
+.creance-price {
+  display: inline-block;
+  vertical-align: middle;
+
+}
+
+.creance-date {
+  font-weight: bold;
+}
+
+
+
+.button-place{
+  margin-bottom: 0px;
+}
+.button{
+  transition: .2s all ease-in-out;
+  font-weight: 500;
+
+}
+
+.button:hover,
+.button:focus{
+  color: #000;
+  background-color: #FFC84E;
+  border-color: #000;
+}
+
+@media (max-width: 768px) {
+  .formulaire h5{
+    width: 100% !important;
+  }
+
+  .list-position{
+    margin-bottom: 10px!important;
+    margin-top: 10px!important;
+
+}
+  .button-place{
+    margin: 0 ;
+    text-align: center !important;
+  }
+  .card{
+    width: 90% ;
+  }
+}
+@media (max-width: 425px) {
+
+  .button-style{
+    margin: 0 ;
+    text-align: center !important;
+  }
+}
