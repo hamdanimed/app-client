@@ -14,6 +14,7 @@ import { ListeCreancesComponent } from './liste-creances/liste-creances.componen
 import { ListeCreanciersComponent } from './liste-creanciers/liste-creanciers.component';
 import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { OperationsComponent } from './operations/operations.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
     ListeCreanciersComponent,
     HomeComponent,
     LoginPageComponent,
+    OperationsComponent,
   ],
   imports: [
     BrowserModule,
