@@ -9,16 +9,20 @@ import { ListeImpayesComponent } from './liste-impayes/liste-impayes.component';
 import { FormulaireCreanceComponent } from './formulaire-creance/formulaire-creance.component';
 import { ListeCreancesComponent } from './liste-creances/liste-creances.component';
 import { ListeCreanciersComponent } from './liste-creanciers/liste-creanciers.component';
+import { HomeComponent } from './home/home.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 const routes: Routes=[
-  { path:'',pathMatch:'full',redirectTo:'paiement-signature' },
+  // { path:'',pathMatch:'full',redirectTo:'paiement-signature' },
+  { path:'',component:LoginPageComponent},
+  { path:'home',component:HomeComponent},
   { path:'paiement-validation',component:PaiementValidationComponent },
   { path:'paiement-signature',component:PaiementSignatureComponent },
   
   { path:'liste-impayes',component:ListeImpayesComponent},
   { path:'formulaire-creance',component:FormulaireCreanceComponent},
-  {path : 'liste-creances',component:ListeCreancesComponent},
-  {path : 'liste-creanciers',component:ListeCreanciersComponent},
+  { path: 'liste-creances',component:ListeCreancesComponent},
+  { path: 'liste-creanciers',component:ListeCreanciersComponent},
 
   { path: '**', pathMatch: 'full', component: PagenotfoundComponent },
 

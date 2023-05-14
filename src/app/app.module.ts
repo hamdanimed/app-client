@@ -12,6 +12,8 @@ import { FormulaireCreanceComponent } from './formulaire-creance/formulaire-crea
 import { ListeImpayesComponent } from './liste-impayes/liste-impayes.component';
 import { ListeCreancesComponent } from './liste-creances/liste-creances.component';
 import { ListeCreanciersComponent } from './liste-creanciers/liste-creanciers.component';
+import { HomeComponent } from './home/home.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { ListeCreanciersComponent } from './liste-creanciers/liste-creanciers.co
     ListeImpayesComponent,
     ListeCreancesComponent,
     ListeCreanciersComponent,
+    HomeComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,

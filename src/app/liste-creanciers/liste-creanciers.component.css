@@ -1,13 +1,19 @@
-.card{
-    width: 732px ;
+/* .card{ */
+    /* width: 732px ;
     height: 430px;
-    border: none !important;
-    box-shadow: 0px 4px 27px rgba(0, 0, 0, 0.04), 0px 4px 62px 17px rgba(0, 0, 0, 0.07);
-  }
-.card-body{
+    border: none !important; */
+    /* box-shadow: 0px 4px 27px rgba(0, 0, 0, 0.04), 0px 4px 62px 17px rgba(0, 0, 0, 0.07); */
+  /* } */
+/* .card-body{
     padding: 0px;
+} */
+
+.creanciers-card{
+  margin-right: 5rem;
+  margin-left: 5rem;
 }
 
+/*
 .w-100 {
     width: 80%!important;
 }
@@ -21,13 +27,15 @@
 }  
 .row{
     text-align: center;
-}
-.photo-gallery {
-    max-width: 730px; /* ou toute autre largeur souhaitée */
-    max-height: 700px; /* ou toute autre hauteur souhaitée */
-}
+} */
+/* .photo-gallery { */
+    /* max-width: 730px;  */
+    /* ou toute autre largeur souhaitée */
+    /* max-height: 700px;  */
+    /* ou toute autre hauteur souhaitée */
+/* } */
 /* Effet sur les images lorsqu'elles sont sélectionnées */
-.image-info {
+/* .image-info {
     position: relative;
     cursor: pointer;
     overflow: hidden;
@@ -45,20 +53,22 @@
     align-items: center;
     justify-content: center;
 }
-  
-  .image-info img {
+  */
+  .image-info {
     transition: all 0.3s ease-in-out;
+    width: 15rem;
+    object-fit: contain;
   }
-  .image-info:hover:before {
+  /* .image-info:hover:before {
     opacity: 1;
-  }
+  } */
   
-  .image-info:hover img {
+  .image-info:hover{
     transform: scale(1.1);
   }
   
   /* Style pour la sélection de la photo */
-  .ekko-lightbox .modal-header,
+  /* .ekko-lightbox .modal-header,
   .ekko-lightbox .modal-footer {
     display: none;
   }
@@ -78,9 +88,9 @@
   .ekko-lightbox .ekko-lightbox-content {
     max-height: 100%;
     max-width: 100%;
-  }
+  } */
   
- 
+/*  
   @media (max-width: 768px) {
     .formulaire h5{
       width: 100% !important;
@@ -95,4 +105,4 @@
   
       height: 430px;
     }
-  }
+  } */
