@@ -28,7 +28,7 @@
             <!-- Gallery -->
             <!-- <div class="row p-2 photo-gallery mt-4" style="max-height: 250px; overflow-y: auto;"> -->
             <div class="d-flex flex-wrap gap-4 p-sm-5 p-3 creanciers-card-body" style="max-height: 25rem; overflow-y: scroll;">
-              <img *ngFor="let image of images" src="{{ image.url }}" (click)="redirectToFormulaire(image.title)" class="image-info border shadow-1-strong rounded" alt="{{ image.title }}" />
+              <img *ngFor="let image of images" src="{{ image.url }}" (click)="redirectToCreances(image.title)" class="image-info border shadow-1-strong rounded" alt="{{ image.title }}" />
             </div>
 
             <!-- <div class="row p-2 photo-gallery mt-4" > -->

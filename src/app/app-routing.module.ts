@@ -18,15 +18,13 @@ const routes: Routes=[
   { path:'',component:LoginPageComponent},
   { path:'home',component:HomeComponent},
   { path:'operations',component:OperationsComponent},
+  { path:'liste-creanciers',component:ListeCreanciersComponent},
+  { path:':creancier/liste-creances',component:ListeCreancesComponent},
+  { path:':creancier/:creance',component:FormulaireCreanceComponent},
+  { path:'liste-impayes',component:ListeImpayesComponent},
   { path:'paiement-validation',component:PaiementValidationComponent },
   { path:'paiement-signature',component:PaiementSignatureComponent },
-  
-  { path:'liste-impayes',component:ListeImpayesComponent},
-  { path:'formulaire-creance',component:FormulaireCreanceComponent},
-  { path: 'liste-creances',component:ListeCreancesComponent},
-  { path: 'liste-creanciers',component:ListeCreanciersComponent},
-
-  { path: '**', pathMatch: 'full', component: PagenotfoundComponent },
+  { path:'**', pathMatch: 'full', component: PagenotfoundComponent },
 
 ]
 @NgModule({

@@ -38,9 +38,9 @@ export class ListeCreanciersComponent {
 
   constructor(private route: Router){}
 
-  redirectToFormulaire(title :string){
+  redirectToCreances(title :string){
     // alert(title)
-    this.route.navigate(["/liste-creances"])
+    this.route.navigate([`${title}/liste-creances`])
   }
 
 
