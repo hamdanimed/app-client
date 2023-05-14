@@ -1,5 +1,6 @@
+<h3 class="fw-bold text-center mt-5 mb-5">{{"Choisir votre créance" | uppercase}}</h3>
 <div class="formulaire d-flex align-items-center flex-column mt-5">
-    <h5 class="text-center mb-4">Choisir une créance</h5>
+    <!-- <h5 class="text-center mb-4">Choisir une créance</h5> -->
 
     <div class="card">
         <div class="card-body">
@@ -15,8 +16,11 @@
         </div>
 
         <div class="button-place text-end p-1 pt-2">
-            <a href="#" class="btn btn-secondary me-2">Annuler</a>
-            <a href="#" class="btn btn-primary">Valider</a>
+            <button (click)="this.navigate.back()" class="btn btn-outline-secondary me-2">
+                Annuler
+            </button>
+            <!-- <a href="#" class="btn btn-secondary me-2">Annuler</a> -->
+            <a routerLink="/formulaire-creance" class="btn btn-warning">Valider</a>
         </div>
     </div>
 </div>

@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
@@ -34,4 +35,6 @@ export class ListeImpayesComponent {
       price:"80DH"
     },
   ]
+
+  constructor(public navigate:Location){}
 }

@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
@@ -12,4 +13,6 @@ export class PaiementSignatureComponent {
     {reference:1000000,description:"Recharge Voix",value:100},
     {reference:1000000,description:"Recharge Voix",value:100},
   ];
+
+  constructor(public navigate:Location){}
 }

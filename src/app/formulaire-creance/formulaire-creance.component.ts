@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./formulaire-creance.component.css']
 })
 export class FormulaireCreanceComponent {
+  constructor(public navigate:Location){}
 
 }

@@ -14,8 +14,9 @@
         </li>
       </ul>
       <div class="button-place text-end pe-1 mt-5">
-        <a href="#" class="btn btn-outline-secondary me-2 button">annuler</a>
-        <a href="#" class="btn btn-outline-secondary me-3  button">payer</a>
+        <button (click)="this.navigate.back()" class="btn btn-outline-secondary me-2">Annuler</button>
+        <!-- <a href="#" class="btn btn-outline-secondary me-2 button">annuler</a> -->
+        <a routerLink="/paiement-validation" class="btn btn-warning me-3  button">Payer</a>
       </div>
     </div>
   </div>
@@ -24,30 +25,3 @@
 
 
 
-
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-md-6 mx-auto">
-      <div class="card">
-        <div class="card-body" style="max-height: 200px; overflow-y: auto;">
-          <div class="list-group">
-            <a href="#" class="list-group-item">Item 1</a>
-            <a href="#" class="list-group-item">Item 2</a>
-            <a href="#" class="list-group-item">Item 3</a>
-            <a href="#" class="list-group-item">Item 1</a>
-            <a href="#" class="list-group-item">Item 2</a>
-            <a href="#" class="list-group-item">Item 3</a>
-            <a href="#" class="list-group-item">Item 1</a>
-            <a href="#" class="list-group-item">Item 2</a>
-            <a href="#" class="list-group-item">Item 3</a>
-            <a href="#" class="list-group-item">Item 1</a>
-            <a href="#" class="list-group-item">Item 2</a>
-            <a href="#" class="list-group-item">Item 3</a>
-            <!-- Add more list items
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
- -->

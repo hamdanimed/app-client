@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
@@ -18,4 +19,6 @@ export class ListeCreancesComponent {
     { id: 5, name: 'Créance 5' },
     { id: 6, name: 'Créance 6' }
   ];
+
+  constructor(public navigate:Location){}
 }

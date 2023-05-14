@@ -11,11 +11,13 @@ import { ListeCreancesComponent } from './liste-creances/liste-creances.componen
 import { ListeCreanciersComponent } from './liste-creanciers/liste-creanciers.component';
 import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { OperationsComponent } from './operations/operations.component';
 
 const routes: Routes=[
   // { path:'',pathMatch:'full',redirectTo:'paiement-signature' },
   { path:'',component:LoginPageComponent},
   { path:'home',component:HomeComponent},
+  { path:'operations',component:OperationsComponent},
   { path:'paiement-validation',component:PaiementValidationComponent },
   { path:'paiement-signature',component:PaiementSignatureComponent },
   

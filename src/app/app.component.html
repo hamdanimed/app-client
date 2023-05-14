@@ -1,4 +1,17 @@
-<!-- <h1>{{title}}</h1> -->
-<!-- <app-formulaire-creance></app-formulaire-creance>
- --><!-- <app-liste-impayes></app-liste-impayes> -->
+<nav class="navbar px-3" style="background-color: #e3f2fd;">
+    <ul class="nav nav-pills flex-row gap-1 nav-justified">
+        <li class="nav-item">
+          <a class="nav-link border" routerLinkActive="active" routerLink="/home">ACCUEIL</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link border" routerLinkActive="active" routerLink="/operations">OPERATIONS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link border" [ngClass]="{'active':listeCreances.isActive }" routerLinkActive="active" routerLink="/liste-creanciers">PAIEMENT</a>
+          <a class="nav-link border" style="display: none;" #listeCreances="routerLinkActive" routerLinkActive="active" routerLink="/liste-creances">PAIEMENT</a>
+        </li>
+    </ul>
+    <h4 class="fw-bold">SOLDE 10DH</h4>
+</nav>
+  
 <router-outlet></router-outlet>
