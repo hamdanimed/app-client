@@ -7,14 +7,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { PaiementValidationComponent } from './paiement-validation/paiement-validation.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { PaiementSignatureComponent } from './paiement-signature/paiement-signature.component';
 import { FormulaireCreanceComponent } from './formulaire-creance/formulaire-creance.component';
 import { ListeImpayesComponent } from './liste-impayes/liste-impayes.component';
 import { ListeCreancesComponent } from './liste-creances/liste-creances.component';
 import { ListeCreanciersComponent } from './liste-creanciers/liste-creanciers.component';
 import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { OperationsComponent } from './operations/operations.component';
 
 
 @NgModule({
@@ -22,14 +20,12 @@ import { OperationsComponent } from './operations/operations.component';
     AppComponent,
     PaiementValidationComponent,
     PagenotfoundComponent,
-    PaiementSignatureComponent,
     FormulaireCreanceComponent,
     ListeImpayesComponent,
     ListeCreancesComponent,
     ListeCreanciersComponent,
     HomeComponent,
     LoginPageComponent,
-    OperationsComponent,
   ],
   imports: [
     BrowserModule,

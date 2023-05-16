@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-paiement-validation',
@@ -7,12 +8,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./paiement-validation.component.css']
 })
 export class PaiementValidationComponent {
-  impayeList:{name:string,value:number}[]=[
-    {name:"Recharge Voix",value:100},
-    {name:"Recharge Voix",value:100},
-    {name:"Recharge Voix",value:100},
-    {name:"Recharge Voix",value:100},
+  date:Date=new Date(1683495264*1000);
+  impayeList:{reference:number,description:string,value:number}[]=[
+    {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
+    {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
+    {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
+    {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
+    {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
+    {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
+    {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
+    {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
+    {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
   ];
-  
-  constructor(public navigate:Location){}
+
+  constructor(public navigate:Location,private router:Router){}
+
+  validate(){
+    this.router.navigate(['/home'])
+  }
 }

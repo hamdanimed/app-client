@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -36,7 +37,7 @@ export class ListeCreanciersComponent {
     { url: '../../assets/téléchargement.png', title: 'Image 6' },
   ];
 
-  constructor(private route: Router){}
+  constructor(private route: Router,public navigate:Location){}
 
   redirectToCreances(title :string){
     // alert(title)

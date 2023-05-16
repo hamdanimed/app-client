@@ -1,4 +1,4 @@
-<h3 class="fw-bold text-center mt-5 mb-4">{{"paiement de facture" | uppercase}}</h3>
+<h3 class="fw-bold text-center mt-3 mb-4">{{"paiement de facture" | uppercase}}</h3>
 <div class="container shadow-lg py-5 px-4 px-sm-5 mb-5 rounded-4">
     <h4 class="fw-bold">Detail de paiement</h4>
     <hr class="border border-1 opacity-25 border-dark">
@@ -18,26 +18,43 @@
             <p class="fs-5 fw-bold mb-1">Débiteur</p>
             <p class="fs-6 fw-bold m-0 data-color">Hamdani Mohamed</p>
         </div>
+        <div class="">
+            <p class="fs-5 fw-bold mb-1">Date de Créance</p>
+            <p class="fs-6 fw-bold m-0 data-color">{{ date |date:"dd/MM/yyyy"}}</p>
+        </div>
     </div>
-    <h4 class="fw-bold">Selectionner pour payer</h4>
+    <h4 class="fw-bold">Recapulatif des informations saisies</h4>
     <hr class="border border-1 opacity-25 border-dark diverder">
-    <div class="px-sm-4">
-        <div class="impaye-container">
-            <div *ngFor="let impaye of impayeList" class="impaye rounded-4 mt-2 py-3 px-4 px-sm-5 d-flex column-gap-5 row-gap-1 flex-wrap justify-content-between ">
-                <p class="fs-6 fw-bold mb-1">{{impaye.name}}</p>
-                <p class="fs-6 fw-bold mb-1">{{impaye.value}} DH</p>
-            </div>
-        </div>
-        <div class="py-3 px-4 px-sm-5 d-flex flex-wrap column-gap-5 row-gap-1 justify-content-end total">
-            <p class="fs-5 fw-bold mb-1">Total :</p>
-            <p class="fs-5 fw-bold mb-1">100 DH</p>
-
-        </div>
+    <div class="table-responsive" style="max-height:40vh;overflow-y: scroll;">
+        <table class="table table-hover impaye rounded-4" >
+            <thead>
+                <tr>
+                    <th>Reference</th>
+                    <th>Description</th>
+                    <th>Prix TTC</th>
+                </tr>
+            </thead>
+            <tbody class="" >
+                <tr *ngFor="let impaye of impayeList">
+                    <td class="fw-semibold">{{impaye.reference}}</td>
+                    <td class="fw-semibold">{{impaye.description}}</td>
+                    <td class="fw-semibold">{{impaye.value}} DH</td>
+                </tr>
+            </tbody>
+            <tfoot class="">
+                <tr>
+                    <th></th>
+                    <th class="text-center">Total:</th>
+                    <th>100 DH</th>
+                </tr>
+            </tfoot>
+        </table>
     </div>
     <div class="d-flex justify-content-sm-end justify-content-center gap-2 pt-5">
-        <button (click)="this.navigate.back()" class="btn btn-outline-secondary ">Annuler</button>
-        <!-- <a class="btn btn-outline-secondary " role="button" type="button">Annuler</a> -->
-        <a class="btn btn-warning fw-semibold border border-dark border-1"  routerLink="/paiement-signature" role="button" type="button">Valider</a>
+        <button (click)="this.navigate.back()" class="btn btn-outline-secondary">Annuler</button>
+        <button (click)="validate()" class="btn btn-warning fw-semibold"  type="button">Valider</button>
+        <!-- <a class="btn btn-outline-secondary " role="button" type="button">Abondonner la transaction</a> -->
+        <!-- <a class="btn btn-warning fw-semibold border border-dark border-1" role="button" type="button">Confirmer et Signer</a> -->
     </div>
 
     
