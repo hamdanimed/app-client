@@ -13,7 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 
 const routes: Routes=[
-  { path:'',pathMatch:'full',redirectTo:'home' },
+  { path:'',pathMatch:'full',redirectTo:'login' },
   { path:'login',component:LoginPageComponent},
   
   { path:'home',component:HomeComponent},
