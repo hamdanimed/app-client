@@ -11,18 +11,19 @@ import { ListeCreancesComponent } from './liste-creances/liste-creances.componen
 import { ListeCreanciersComponent } from './liste-creanciers/liste-creanciers.component';
 import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes=[
   { path:'',pathMatch:'full',redirectTo:'login' },
   { path:'login',component:LoginPageComponent},
   
-  { path:'home',component:HomeComponent},
-  { path:'liste-creanciers',component:ListeCreanciersComponent},
-  { path:':creancier/liste-creances',component:ListeCreancesComponent},
-  { path:':creancier/:creance',component:FormulaireCreanceComponent},
-  { path:'liste-impayes',component:ListeImpayesComponent},
-  { path:'paiement-validation',component:PaiementValidationComponent },
-  { path:'**', pathMatch: 'full', component: PagenotfoundComponent },
+  { path:'home',component:HomeComponent,canActivate:[AuthGuard]},
+  { path:'liste-creanciers',component:ListeCreanciersComponent,canActivate:[AuthGuard]},
+  { path:':creancier/liste-creances',component:ListeCreancesComponent,canActivate:[AuthGuard]},
+  { path:':creancier/:creance',component:FormulaireCreanceComponent,canActivate:[AuthGuard]},
+  { path:'liste-impayes',component:ListeImpayesComponent,canActivate:[AuthGuard]},
+  { path:'paiement-validation',component:PaiementValidationComponent ,canActivate:[AuthGuard]},
+  { path:'**', pathMatch: 'full', component: PagenotfoundComponent,canActivate:[AuthGuard] },
 
 ]
 @NgModule({
