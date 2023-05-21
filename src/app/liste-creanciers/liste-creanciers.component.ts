@@ -1,6 +1,9 @@
 import { Location } from '@angular/common';
-import { Component } from '@angular/core';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
+import { EMPTY, catchError } from 'rxjs';
 
 @Component({
   selector: 'app-liste-creanciers',
@@ -8,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./liste-creanciers.component.css']
 })
 
-export class ListeCreanciersComponent {
+export class ListeCreanciersComponent implements OnInit {
   images = [  
     { url: '../../assets/Cashplus.jpg', title: 'Image 1' },
     { url: '../../assets/Cashplus.jpg', title: 'Image 1' },
@@ -37,12 +40,32 @@ export class ListeCreanciersComponent {
     { url: '../../assets/téléchargement.png', title: 'Image 6' },
   ];
 
-  constructor(private route: Router,public navigate:Location){}
+  
+
+  constructor(private route: Router,public navigate:Location,private http:HttpClient,private authService:AuthService){}
+
 
   redirectToCreances(title :string){
     // alert(title)
     this.route.navigate([`${title}/liste-creances`])
   }
 
+  ngOnInit(): void {
+    
+    let token = this.authService.getToken()
+    this.http.get('http://localhost:8090/creanciers',{
+      headers: {
+        Authorization:"Bearer "+token
+      }
+    })
+    .subscribe(
+      (data)=> {
+        console.log(data);
+      },
+      (err)=>{
+        console.log("no data");
+      }
+    )
+  }
 
 }
