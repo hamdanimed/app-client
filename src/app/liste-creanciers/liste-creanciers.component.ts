@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataSoapService } from '../services/data-soap/data-soap.service';
 
 @Component({
   selector: 'app-liste-creanciers',
@@ -36,8 +37,27 @@ export class ListeCreanciersComponent {
     { url: '../../assets/téléchargement.png', title: 'Image 6' },
     { url: '../../assets/téléchargement.png', title: 'Image 6' },
   ];
+  listCreancier:any[]=[];
 
-  constructor(private route: Router,public navigate:Location){}
+  constructor(private route: Router,public navigate:Location,private soapService:DataSoapService){}
+
+  ngOnInit(){
+    this.soapService.getCreanciers().subscribe(data=>{
+      //converting result to json
+      console.log("list of creancier")
+      this.listCreancier=this.soapService.xml2jsonCreanciers(data)
+      this.listCreancier[0].logoUrl='../../assets/téléchargement.png';
+      this.listCreancier[1].logoUrl='../../assets/Cashplus.jpg';
+      console.log(this.listCreancier)
+
+    })
+
+    this.soapService.getCreances("1").subscribe(data=>{
+      //converting result to json
+      console.log("list of creance for creancier 1")
+      console.log(this.soapService.xml2jsonCreances(data))
+    })
+  }
 
   redirectToCreances(title :string){
     // alert(title)
