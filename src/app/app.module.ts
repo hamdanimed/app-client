@@ -14,6 +14,9 @@ import { ListeCreancesComponent } from './liste-creances/liste-creances.componen
 import { ListeCreanciersComponent } from './liste-creanciers/liste-creanciers.component';
 import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -32,10 +35,13 @@ import { LoginPageComponent } from './login-page/login-page.component';
     BrowserModule,
     NgbModule,
     AppRoutingModule,
-    CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    CommonModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

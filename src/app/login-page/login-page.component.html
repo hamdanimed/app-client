@@ -2,16 +2,16 @@
 
     <main class="form-signin w-50 m-auto">
         
-        <form>
+        <form #f="ngForm">
         <!-- <img class="mb-4" src="https://picsum.photos/60" alt="" width="72" height="57"> -->
         <h1 class="h3 mb-5 fw-bold">{{"Please log in"| uppercase}}</h1>
     
         <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="username" [(ngModel)]="form.username" #username="ngModel">
             <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" [(ngModel)]="form.password" #password="ngModel">
           <label for="floatingPassword">Password</label>
         </div>
     
@@ -20,7 +20,7 @@
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div> -->
-        <button (click)="login()" class="w-100 btn btn-lg btn-primary" type="button">Log in</button>
+        <button (click)="submitLogin()" class="w-100 btn btn-lg btn-primary" type="button">Log in</button>
         <!-- <p class="mt-5 mb-3 text-muted">© 2017–2022</p> -->
       </form>
   </main>

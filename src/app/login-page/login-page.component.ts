@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginBody } from '../interfaces/LoginBody';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -8,10 +10,17 @@ import { Router } from '@angular/router';
 })
 export class LoginPageComponent {
 
-  constructor(public router:Router){}
+  form:LoginBody = {
+    username:"",
+    password:""
+  }
 
-  login(){
-    this.router.navigate(["/home"])
+  constructor(public router:Router,private authService:AuthService){}
+
+  submitLogin(){
+    console.log(this.form);
+    // console.log(this.form);
+    this.authService.login(this.form)
   }
 
 }

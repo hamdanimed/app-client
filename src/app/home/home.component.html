@@ -10,7 +10,7 @@
           <a class="btn btn-outline-primary me-2" style="display: none;" #listeCreances="routerLinkActive" routerLinkActive="active" routerLink="/liste-creances">PAIEMENT</a>
         </li>
         <li class="nav-item">
-          <a routerLink="/login" class="btn btn-outline-danger">Deconnecte</a>
+          <a routerLink="/login" class="btn btn-outline-danger" (click)="submitLogout()">Deconnecte</a>
         </li>
 
       </ul>
