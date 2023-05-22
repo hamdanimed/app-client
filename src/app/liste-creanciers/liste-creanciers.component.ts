@@ -51,17 +51,11 @@ export class ListeCreanciersComponent {
       console.log(this.listCreancier)
 
     })
-
-    this.soapService.getCreances("1").subscribe(data=>{
-      //converting result to json
-      console.log("list of creance for creancier 1")
-      console.log(this.soapService.xml2jsonCreances(data))
-    })
   }
 
   redirectToCreances(title :string){
     // alert(title)
-    this.route.navigate([`${title}/liste-creances`])
+    this.route.navigate([`liste-creance/${title}`])
   }
 
 

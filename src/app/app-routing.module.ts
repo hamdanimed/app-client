@@ -18,8 +18,8 @@ const routes: Routes=[
   
   { path:'home',component:HomeComponent},
   { path:'liste-creanciers',component:ListeCreanciersComponent},
-  { path:':creancier/liste-creances',component:ListeCreancesComponent},
-  { path:':creancier/:creance',component:FormulaireCreanceComponent},
+  { path:'liste-creance/:code-creancier',component:ListeCreancesComponent},
+  { path:'form/:code-creancier/:code-creance',component:FormulaireCreanceComponent},
   { path:'liste-impayes',component:ListeImpayesComponent},
   { path:'paiement-validation',component:PaiementValidationComponent },
   { path:'**', pathMatch: 'full', component: PagenotfoundComponent },
