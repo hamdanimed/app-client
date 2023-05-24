@@ -10,10 +10,15 @@ import { Router } from '@angular/router';
 export class HomeComponent {
 
   constructor(private authService:AuthService,private router:Router){}
+
+  redirectToCreancier(){
+    this.router.navigate(['liste-creancier'])
+  }
   
   submitLogout()
   {
     this.authService.logout()
+    this.router.navigate(['liste-creancier'])
   }
 
 }

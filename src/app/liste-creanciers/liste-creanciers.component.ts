@@ -2,10 +2,11 @@ import { Location } from '@angular/common';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataSoapService } from '../services/data-soap/data-soap.service';
+import { DataSoapService } from '../services/data-soap.service';
 import { AuthService } from '../service/auth.service';
 import { EMPTY, catchError } from 'rxjs';
 import { Creancier } from '../interfaces/Creancier';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-liste-creanciers',
@@ -43,7 +44,7 @@ export class ListeCreanciersComponent implements OnInit {
   ];
   listCreancier:Creancier[]=[];
 
-  constructor(private router: Router,public navigate:Location,private soapService:DataSoapService,private http:HttpClient,private authService:AuthService){}
+  constructor(private dataService:DataService,private soapService:DataSoapService,private router: Router,public navigate:Location,private http:HttpClient,private authService:AuthService){}
 
   ngOnInit(){
     this.soapService.getCreanciers().subscribe(data=>{
@@ -52,10 +53,11 @@ export class ListeCreanciersComponent implements OnInit {
       this.listCreancier=this.soapService.xml2jsonCreanciers(data)
       
       this.listCreancier[0].logoUrl='../../assets/téléchargement.png';
-      this.listCreancier[1].logoUrl='../../assets/Cashplus.jpg';
+      this.listCreancier[1].logoUrl='https://res.cloudinary.com/mohamedham2/image/upload/v1684952517/Jabak_lah-Project/LogoRedal_lonoau.png';
 
-      this.soapService.fetchedCreanciers=this.listCreancier;
-      console.log(this.soapService.fetchedCreanciers)
+
+      this.dataService.fetchedCreanciers=this.listCreancier;
+      console.log(this.dataService.fetchedCreanciers)
 
     })
     
@@ -77,8 +79,8 @@ export class ListeCreanciersComponent implements OnInit {
 
   redirectToCreances(creancierId :number){
     // alert(title)
-    console.log(this.soapService.fetchedCreanciers)
-    this.soapService.selectedCreancier=this.soapService.fetchedCreanciers.find(creancier=>creancier.id===creancierId)
+    console.log(this.dataService.fetchedCreanciers)
+    this.dataService.selectedCreancier=this.dataService.fetchedCreanciers.find(creancier=>creancier.id===creancierId)
     this.router.navigate([`liste-creance`],{queryParams:{creancierId:creancierId}})
   }
   back(){

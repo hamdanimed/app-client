@@ -13,11 +13,6 @@ export class DataSoapService {
   httpOptions = {
     headers: new HttpHeaders({'Content-Type':'text/xml'}),responseType:'text'
   };
-
-  fetchedCreances:any[]=[];
-  fetchedCreanciers:any[]=[];
-  selectedCreancier:any;
-  selectedCreance:any;
     
   // let myHeaders = new Headers();
   // myHeaders.append("Content-Type", "text/xml");

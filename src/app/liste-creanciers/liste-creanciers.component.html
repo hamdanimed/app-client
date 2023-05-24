@@ -28,7 +28,7 @@
             </div> -->
             <!-- Gallery -->
             <!-- <div class="row p-2 photo-gallery mt-4" style="max-height: 250px; overflow-y: auto;"> -->
-            <div class="d-flex flex-wrap gap-4 p-sm-5 p-3 creanciers-card-body" style="max-height: 25rem; overflow-y: scroll;">
+            <div class="d-flex flex-wrap gap-4 p-sm-5 p-3 creanciers-card-body" style="max-height: 25rem; overflow-y: auto;">
               <img *ngFor="let creancier of listCreancier" src="{{ creancier.logoUrl }}" (click)="redirectToCreances(creancier.id)" class="image-info border shadow-1-strong rounded" alt="logo image of {{ creancier.name }}" />
             </div>
 
