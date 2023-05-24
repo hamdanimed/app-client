@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataSoapService } from '../services/data-soap/data-soap.service';
+import { Creance } from '../interfaces/Creance';
 
 @Component({
   selector: 'app-liste-creances',
@@ -9,36 +10,60 @@ import { DataSoapService } from '../services/data-soap/data-soap.service';
   styleUrls: ['./liste-creances.component.css']
 })
 export class ListeCreancesComponent {
-  creances = [
-    { id: 1, name: 'Créance 1' },
-    { id: 2, name: 'Créance 2' },
-    { id: 3, name: 'Créance 3' },
-    { id: 4, name: 'Créance 4' },
-    { id: 5, name: 'Créance 5' },
-    { id: 6, name: 'Créance 6' }
-  ];
-  creancier:string="";
-  creance:string="1";
+  listCreance:Creance[] = [];
+
+  creancierSelectedId:string="";
+  creanceSelectedId:number=0;
   constructor(public navigate:Location,private router:Router,private activatedRoute:ActivatedRoute,private soapService:DataSoapService){}
   
   ngOnInit(){
-    this.activatedRoute.paramMap.subscribe((params)=>{
-      let creancierString=params.get('code-creancier');
+    this.activatedRoute.queryParamMap.subscribe((params)=>{
+      let creancierString=params.get('creancierId');
+
       if(creancierString === null ){
-        this.router.navigate(["/notfound"])
+        this.router.navigate(["liste-creancier"])
       }else{
-        this.creancier=creancierString ;
-      }
+
+            this.creancierSelectedId=creancierString ;
+            this.soapService.getCreances(this.creancierSelectedId).subscribe(data=>{
+              //converting result to json
+              // console.log("list of creance for creancier 1")
+              // console.log(this.soapService.xml2jsonCreances(data))
+              this.listCreance=this.soapService.xml2jsonCreances(data)
+    
+              if(!this.soapService.fetchedCreanciers.length){
+                this.soapService.getCreanciers().subscribe(data=>{
+                  this.soapService.fetchedCreanciers=this.soapService.xml2jsonCreanciers(data)
+                  this.soapService.selectedCreancier=this.soapService.fetchedCreanciers.find(creancier=>creancier.id===this.creancierSelectedId)
+                })
+              }else{
+                this.soapService.selectedCreancier=this.soapService.fetchedCreanciers.find(creancier=>creancier.id===this.creancierSelectedId)
+              }
+              
+              this.soapService.selectedCreancier=this.soapService.fetchedCreanciers.find(creancier=>creancier.id===this.creancierSelectedId)
+              this.soapService.fetchedCreances=this.listCreance;
+            })
+
+        }
+
     })
 
-    this.soapService.getCreances("1").subscribe(data=>{
-      //converting result to json
-      console.log("list of creance for creancier 1")
-      console.log(this.soapService.xml2jsonCreances(data))
-    })
+  }
+
+  onChange(e:any){
+    // console.log(e.target.value)
+    this.creanceSelectedId=e.target.value;
   }
 
   redirectToForm(){
-    this.router.navigate([`form/${this.creancier}/${this.creance}`])
+    if(this.creanceSelectedId!==0){
+      this.soapService.selectedCreance=this.soapService.fetchedCreances.find(creance=>creance.id===this.creanceSelectedId);
+      this.router.navigate([`form`],
+      // {queryParams:{creanceId:this.creanceSelectedId},}
+    )
+    }
+  }
+  back(){
+    this.router.navigate(['liste-creancier'])
   }
 }

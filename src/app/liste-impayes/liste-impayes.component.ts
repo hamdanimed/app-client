@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-liste-impayes',
@@ -43,7 +44,7 @@ export class ListeImpayesComponent {
 
   impayesToPaye:any[]=[];
 
-  constructor(public navigate:Location){}
+  constructor(public navigate:Location,private router:Router){}
 
   toggleImpaye(impayeObject:any){
     if(this.impayesToPaye.includes(impayeObject)){
@@ -59,6 +60,9 @@ export class ListeImpayesComponent {
 
   printImpayesToPaye(){
     console.log(this.impayesToPaye);
+  }
+  back(){
+    this.router.navigate(['form'])
   }
 
 }

@@ -18,9 +18,9 @@ const routes: Routes=[
   { path:'login',component:LoginPageComponent},
   
   { path:'home',component:HomeComponent,canActivate:[AuthGuard]},
-  { path:'liste-creanciers',component:ListeCreanciersComponent,canActivate:[AuthGuard]},
-  { path:'liste-creance/:code-creancier',component:ListeCreancesComponent,canActivate:[AuthGuard]},
-  { path:'form/:code-creancier/:code-creance',component:FormulaireCreanceComponent,canActivate:[AuthGuard]},
+  { path:'liste-creancier',component:ListeCreanciersComponent,canActivate:[AuthGuard]},
+  { path:'liste-creance',component:ListeCreancesComponent,canActivate:[AuthGuard]},
+  { path:'form',component:FormulaireCreanceComponent,canActivate:[AuthGuard]},
   { path:'liste-impayes',component:ListeImpayesComponent,canActivate:[AuthGuard]},
   { path:'paiement-validation',component:PaiementValidationComponent,canActivate:[AuthGuard]},
   { path:'**', pathMatch: 'full', component: PagenotfoundComponent,canActivate:[AuthGuard]},

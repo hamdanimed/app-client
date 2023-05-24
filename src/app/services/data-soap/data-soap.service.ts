@@ -14,6 +14,10 @@ export class DataSoapService {
     headers: new HttpHeaders({'Content-Type':'text/xml'}),responseType:'text'
   };
 
+  fetchedCreances:any[]=[];
+  fetchedCreanciers:any[]=[];
+  selectedCreancier:any;
+  selectedCreance:any;
     
   // let myHeaders = new Headers();
   // myHeaders.append("Content-Type", "text/xml");
@@ -50,9 +54,41 @@ export class DataSoapService {
     return this.http.post(this.url,raw,{headers: new HttpHeaders({'Content-Type':'text/xml'}),responseType:'text'})
   }
 
-  getCreances(id:string){
-    let raw = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetCreancesByCreancierIDRequest xmlns="http://www.jl_entities.com/creancierservice"><id>'+id+'</id></GetCreancesByCreancierIDRequest></soap:Body></soap:Envelope>';
+  getCreances(creancierId:string){
+    let raw = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetCreancesByCreancierIDRequest xmlns="http://www.jl_entities.com/creancierservice"><id>'+creancierId+'</id></GetCreancesByCreancierIDRequest></soap:Body></soap:Envelope>';
     return this.http.post(this.url,raw,{headers: new HttpHeaders({'Content-Type':'text/xml'}),responseType:'text'})
+  }
+  
+  getForms(creanceId:string){
+    let raw = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetFormsByCreanceIDRequest xmlns="http://www.jl_entities.com/creancierservice"><id>'+creanceId+'</id></GetFormsByCreanceIDRequest></soap:Body></soap:Envelope>';
+    return this.http.post(this.url,raw,{headers: new HttpHeaders({'Content-Type':'text/xml'}),responseType:'text'})
+  }
+
+  xml2jsonForms(data:string){
+    let parser = new DOMParser();
+    let xmlDoc = parser.parseFromString(data, "text/xml");
+    let formXML=xmlDoc.getElementsByTagName("ns2:forms");
+    let formJson:{id:string,champs:{id:string,type:string,name:string,label:string}[]}={id:"",champs:[]};
+    // console.log(formXML[0].childNodes[0].childNodes[0].nodeValue) //get value of form id through hierarchy
+    // console.log(formXML[0].getElementsByTagName("ns2:id")[0].childNodes[0].nodeValue)
+    formJson.id=formXML[0].getElementsByTagName("ns2:id")[0].childNodes[0].nodeValue as string;
+
+    let listChampXML: Element[]=Array.from(formXML[0].getElementsByTagName("ns2:champs"));
+    let listChampJson:any[]=[];
+
+    listChampXML.forEach(champ=>{
+      let champJson:{id:string,type:string,name:string,label:string}={id:"",type:"",name:"",label:""};
+
+      champJson.id=champ.getElementsByTagName("ns2:id")[0].childNodes[0].nodeValue as string;
+      champJson.type=champ.getElementsByTagName("ns2:type")[0].childNodes[0].nodeValue as string;
+      champJson.name=champ.getElementsByTagName("ns2:name")[0].childNodes[0].nodeValue as string;
+      champJson.label=champ.getElementsByTagName("ns2:label")[0].childNodes[0].nodeValue as string;
+
+      listChampJson.push(champJson)
+
+    });
+    formJson.champs=listChampJson;
+    return formJson;
   }
 
   xml2jsonCreances(data:string){
