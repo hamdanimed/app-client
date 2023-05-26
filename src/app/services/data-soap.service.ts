@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ImpayeCredential } from '../interfaces/ImpayeCredential';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,38 @@ export class DataSoapService {
     return this.http.post(this.url,raw,{headers: new HttpHeaders({'Content-Type':'text/xml'}),responseType:'text'})
   }
 
+  getImpayes(creanceId:string,credentials:ImpayeCredential[]){
+    let raw='<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetImpayesByCreanceIDRequest xmlns="http://www.jl_entities.com/creancierservice"><creanceId>'+creanceId+'</creanceId><credentials>';
+    credentials.forEach(credential=>{
+      raw+='<credential>';
+      raw+='<credentialName>'+credential.name+'</credentialName>';
+      raw+='<credentialValue>'+credential.value+'</credentialValue>';
+      raw+='</credential>';
+    })
+    raw+='</credentials></GetImpayesByCreanceIDRequest></soap:Body></soap:Envelope>';
+    return this.http.post(this.url,raw,{headers: new HttpHeaders({'Content-Type':'text/xml'}),responseType:'text'})
+  }
+
+  xml2jsonImpayes(data:string){
+    let parser = new DOMParser();
+    let xmlDoc = parser.parseFromString(data, "text/xml");
+    let listImpayeXML: Element[]=Array.from(xmlDoc.getElementsByTagName("ns2:impayes"));
+    let listImpayeJson:any[]=[];
+
+    listImpayeXML.forEach(impaye=>{
+      let impayeJson:{id:string,name:string,price:number,isPaid:boolean,date:string}={id:"",name:"",price:0,isPaid:false,date:"10/10/2023"};
+
+      impayeJson.id=impaye.getElementsByTagName("ns2:id")[0].childNodes[0].nodeValue as string;
+      impayeJson.name=impaye.getElementsByTagName("ns2:name")[0].childNodes[0].nodeValue as string;
+      impayeJson.price=Number(impaye.getElementsByTagName("ns2:price")[0].childNodes[0].nodeValue as string);
+      let isPaidTemp=impaye.getElementsByTagName("ns2:isPaid")[0].childNodes[0].nodeValue as string;
+      impayeJson.isPaid=isPaidTemp==="false"?false:true;
+
+      listImpayeJson.push(impayeJson);
+    })
+    return listImpayeJson;
+  }
+
   xml2jsonForms(data:string){
     let parser = new DOMParser();
     let xmlDoc = parser.parseFromString(data, "text/xml");
@@ -79,7 +112,7 @@ export class DataSoapService {
       champJson.name=champ.getElementsByTagName("ns2:name")[0].childNodes[0].nodeValue as string;
       champJson.label=champ.getElementsByTagName("ns2:label")[0].childNodes[0].nodeValue as string;
 
-      listChampJson.push(champJson)
+      listChampJson.push(champJson);
 
     });
     formJson.champs=listChampJson;
@@ -103,7 +136,7 @@ export class DataSoapService {
       listCreanceJson.push(creanceJson);
 
     });
-    return listCreanceJson
+    return listCreanceJson;
   }
 
   xml2jsonCreanciers(data:string){
@@ -124,7 +157,7 @@ export class DataSoapService {
         listCreancierJson.push(creancierJson);
 
       });
-      return listCreancierJson
+      return listCreancierJson;
   }
 
 

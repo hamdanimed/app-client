@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ImpayeCredential } from '../interfaces/ImpayeCredential';
 
 @Injectable({
     providedIn: 'root'
@@ -9,5 +10,8 @@ import { Injectable } from '@angular/core';
     fetchedCreanciers:any[]=[];
     selectedCreancier:any;
     selectedCreance:any;
-    
+
+    impayeCredentialsEntered:ImpayeCredential[]=[];
+    listImpaye:any[]=[];
+    ImpayeToPaye:any[]=[];
   }

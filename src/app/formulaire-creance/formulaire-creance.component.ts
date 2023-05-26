@@ -5,6 +5,7 @@ import { DataSoapService } from '../services/data-soap.service';
 import { Creance } from '../interfaces/Creance';
 import { Creancier } from '../interfaces/Creancier';
 import { DataService } from '../services/data.service';
+import { ImpayeCredential } from '../interfaces/ImpayeCredential';
 
 @Component({
   selector: 'app-formulaire-creance',
@@ -37,6 +38,21 @@ export class FormulaireCreanceComponent {
 
     }
 
+  }
+
+  redirectToListeImpaye(inputs:HTMLFormElement){
+    let credentials:ImpayeCredential[]=[];
+    let credentialsInputs:any[]=Array.from(inputs.getElementsByTagName("input"));
+    credentialsInputs.forEach(element => {
+      if(!element.value.length){return}
+      credentials.push({name:element.name,value:element.value});
+      // console.log(element.name,element.value)
+    });
+    if(credentials.length === credentialsInputs.length){
+      this.dataService.impayeCredentialsEntered=credentials;
+      console.log(credentials)
+      this.router.navigate([`liste-impayes`])
+    }
   }
 
   back(){

@@ -1,6 +1,9 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataSoapService } from '../services/data-soap.service';
+import { DataService } from '../services/data.service';
+import { ImpayeCredential } from '../interfaces/ImpayeCredential';
 
 @Component({
   selector: 'app-liste-impayes',
@@ -42,9 +45,25 @@ export class ListeImpayesComponent {
     },
   ]
 
+  listImpaye:any[]=[];
   impayesToPaye:any[]=[];
 
-  constructor(public navigate:Location,private router:Router){}
+  constructor(private dataService:DataService,private soapService:DataSoapService,public navigate:Location,private router:Router){}
+
+  ngOnInit(){
+    if(!this.dataService.selectedCreance || !this.dataService.impayeCredentialsEntered.length){
+      this.router.navigate(['liste-creancier'])
+    }else{
+      let selectedCreanceId=this.dataService.selectedCreance.id;
+      let credentials=this.dataService.impayeCredentialsEntered;
+      // let credentials:ImpayeCredential[]=[{name:"email",value:"hamza@gmail.com"},{name:"invoice-number",value:"192168"}];
+  
+      this.soapService.getImpayes(selectedCreanceId,credentials).subscribe(data=>{
+          let impayes=this.soapService.xml2jsonImpayes(data);
+          this.listImpaye=impayes.filter(impaye=>{return !impaye.isPaid});
+      })
+    }
+  }
 
   toggleImpaye(impayeObject:any){
     if(this.impayesToPaye.includes(impayeObject)){
@@ -58,8 +77,11 @@ export class ListeImpayesComponent {
     }
   }
 
-  printImpayesToPaye(){
-    console.log(this.impayesToPaye);
+  redirectToValidatePaiement(){
+    if(this.impayesToPaye.length !== 0){
+      this.dataService.ImpayeToPaye=this.impayesToPaye;
+      this.router.navigate(['paiement-validation'])
+    }
   }
   back(){
     this.router.navigate(['form'])
