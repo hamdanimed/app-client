@@ -10,7 +10,7 @@
           <label class="creance-item row "  for="impaye-{{Imp.id}}">
             <span class="creance-date col-md-3 p-0"> {{Imp.date}}</span>
             <span class="creance-name  col-md-4 p-0">{{Imp.name}}</span>
-            <span class="creance-price attribute p-0 col-md-5 text-md-end text-sm-start ">{{Imp.price}}</span>
+            <span class="creance-price attribute p-0 col-md-5 text-md-end text-sm-start ">{{Imp.price | currency}}</span>
           </label>
         </li>
       </ul>

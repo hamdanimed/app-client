@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ImpayeCredential } from '../interfaces/ImpayeCredential';
+import { Impaye } from '../interfaces/Impaye';
 
 @Injectable({
   providedIn: 'root'
@@ -79,9 +80,10 @@ export class DataSoapService {
     let listImpayeJson:any[]=[];
 
     listImpayeXML.forEach(impaye=>{
-      let impayeJson:{id:string,name:string,price:number,isPaid:boolean,date:string}={id:"",name:"",price:0,isPaid:false,date:"10/10/2023"};
+      // let impayeJson:{id:string,name:string,price:number,isPaid:boolean,date:string}={id:"",name:"",price:0,isPaid:false,date:"10/10/2023"};
+      let impayeJson:Impaye={id:0,name:"",price:0,isPaid:false,date:"10/10/2023"};
 
-      impayeJson.id=impaye.getElementsByTagName("ns2:id")[0].childNodes[0].nodeValue as string;
+      impayeJson.id=Number(impaye.getElementsByTagName("ns2:id")[0].childNodes[0].nodeValue as string);
       impayeJson.name=impaye.getElementsByTagName("ns2:name")[0].childNodes[0].nodeValue as string;
       impayeJson.price=Number(impaye.getElementsByTagName("ns2:price")[0].childNodes[0].nodeValue as string);
       let isPaidTemp=impaye.getElementsByTagName("ns2:isPaid")[0].childNodes[0].nodeValue as string;

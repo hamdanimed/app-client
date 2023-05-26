@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../services/data.service';
+import { Impaye } from '../interfaces/Impaye';
 
 @Component({
   selector: 'app-paiement-validation',
@@ -23,15 +24,19 @@ export class PaiementValidationComponent {
   //   {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
   // ];
 
-  impayeList:any[]=[];
+  impayeList:Impaye[]=[];
   verificationModalMsg:string="Paiment Validated ✅ \n Validation Failed ❌\n";
   code:string="";
+  totalPrice:number=0;
   constructor(public dataService:DataService,private modalService:NgbModal,public navigate:Location,private router:Router){}
   ngOnInit(){
     if(!this.dataService.ImpayeToPaye.length){
       this.router.navigate(['liste-creancier'])
     }else{
       this.impayeList=this.dataService.ImpayeToPaye;
+      this.impayeList.forEach(impaye=>{
+        this.totalPrice+=impaye.price;
+      })
     }
   }
 

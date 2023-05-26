@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { DataSoapService } from '../services/data-soap.service';
 import { DataService } from '../services/data.service';
 import { ImpayeCredential } from '../interfaces/ImpayeCredential';
+import { Impaye } from '../interfaces/Impaye';
 
 @Component({
   selector: 'app-liste-impayes',
@@ -45,8 +46,8 @@ export class ListeImpayesComponent {
     },
   ]
 
-  listImpaye:any[]=[];
-  impayesToPaye:any[]=[];
+  listImpaye:Impaye[]=[];
+  impayesToPaye:Impaye[]=[];
 
   constructor(private dataService:DataService,private soapService:DataSoapService,public navigate:Location,private router:Router){}
 

@@ -38,14 +38,14 @@
                 <tr *ngFor="let impaye of impayeList">
                     <td class="fw-semibold">{{impaye.id}}</td>
                     <td class="fw-semibold">{{impaye.name}}</td>
-                    <td class="fw-semibold">{{impaye.price}} DH</td>
+                    <td class="fw-semibold">{{impaye.price | currency}}</td>
                 </tr>
             </tbody>
             <tfoot class="">
                 <tr>
                     <th></th>
                     <th class="text-center">Total:</th>
-                    <th>100 DH</th>
+                    <th>{{totalPrice | currency}}</th>
                 </tr>
             </tfoot>
         </table>
