@@ -25,6 +25,7 @@ const routes: Routes=[
   { path:'form',component:FormulaireCreanceComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
   { path:'liste-impayes',component:ListeImpayesComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
   { path:'paiement-validation',component:PaiementValidationComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
+  { path:'change-password',component:ChangePasswordComponent ,canActivate:[AuthGuard]},
   { path:'**', pathMatch: 'full', component: PagenotfoundComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
 
 ]
