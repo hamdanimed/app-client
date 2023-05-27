@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataSoapService } from '../services/data-soap/data-soap.service';
 import { AuthService } from '../service/auth.service';
 import { EMPTY, catchError } from 'rxjs';
 
@@ -39,18 +40,20 @@ export class ListeCreanciersComponent implements OnInit {
     { url: '../../assets/téléchargement.png', title: 'Image 6' },
     { url: '../../assets/téléchargement.png', title: 'Image 6' },
   ];
+  listCreancier:any[]=[];
 
-  
+  constructor(private route: Router,public navigate:Location,private soapService:DataSoapService,private http:HttpClient,private authService:AuthService){}
 
-  constructor(private route: Router,public navigate:Location,private http:HttpClient,private authService:AuthService){}
+  ngOnInit(){
+    this.soapService.getCreanciers().subscribe(data=>{
+      //converting result to json
+      console.log("list of creancier")
+      this.listCreancier=this.soapService.xml2jsonCreanciers(data)
+      this.listCreancier[0].logoUrl='../../assets/téléchargement.png';
+      this.listCreancier[1].logoUrl='../../assets/Cashplus.jpg';
+      console.log(this.listCreancier)
 
-
-  redirectToCreances(title :string){
-    // alert(title)
-    this.route.navigate([`${title}/liste-creances`])
-  }
-
-  ngOnInit(): void {
+    })
     
     let token = this.authService.getToken()
     this.http.get('http://localhost:8090/creanciers',{
@@ -66,6 +69,11 @@ export class ListeCreanciersComponent implements OnInit {
         console.log("no data");
       }
     )
+  }
+
+  redirectToCreances(title :string){
+    // alert(title)
+    this.route.navigate([`liste-creance/${title}`])
   }
 
 }

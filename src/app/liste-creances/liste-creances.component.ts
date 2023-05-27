@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataSoapService } from '../services/data-soap/data-soap.service';
 
 @Component({
   selector: 'app-liste-creances',
@@ -17,21 +18,27 @@ export class ListeCreancesComponent {
     { id: 6, name: 'Créance 6' }
   ];
   creancier:string="";
-  constructor(public navigate:Location,private router:Router,private activatedRoute:ActivatedRoute){}
+  creance:string="1";
+  constructor(public navigate:Location,private router:Router,private activatedRoute:ActivatedRoute,private soapService:DataSoapService){}
   
   ngOnInit(){
     this.activatedRoute.paramMap.subscribe((params)=>{
-      let creancierString=params.get('creancier');
-      if(creancierString === null){
+      let creancierString=params.get('code-creancier');
+      if(creancierString === null ){
         this.router.navigate(["/notfound"])
       }else{
         this.creancier=creancierString ;
-
       }
+    })
+
+    this.soapService.getCreances("1").subscribe(data=>{
+      //converting result to json
+      console.log("list of creance for creancier 1")
+      console.log(this.soapService.xml2jsonCreances(data))
     })
   }
 
   redirectToForm(){
-    this.router.navigate([`${this.creancier}/creance1`])
+    this.router.navigate([`form/${this.creancier}/${this.creance}`])
   }
 }
