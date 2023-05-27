@@ -12,18 +12,21 @@ import { ListeCreanciersComponent } from './liste-creanciers/liste-creanciers.co
 import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AuthGuard } from './guard/auth.guard';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { PasswordChangeGuard } from './guard/password-change.guard';
 
 const routes: Routes=[
   { path:'',pathMatch:'full',redirectTo:'login' },
   { path:'login',component:LoginPageComponent},
   
-  { path:'home',component:HomeComponent,canActivate:[AuthGuard]},
-  { path:'liste-creanciers',component:ListeCreanciersComponent,canActivate:[AuthGuard]},
-  { path:':creancier/liste-creances',component:ListeCreancesComponent,canActivate:[AuthGuard]},
-  { path:':creancier/:creance',component:FormulaireCreanceComponent,canActivate:[AuthGuard]},
-  { path:'liste-impayes',component:ListeImpayesComponent,canActivate:[AuthGuard]},
-  { path:'paiement-validation',component:PaiementValidationComponent ,canActivate:[AuthGuard]},
-  { path:'**', pathMatch: 'full', component: PagenotfoundComponent,canActivate:[AuthGuard] },
+  { path:'home',component:HomeComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
+  { path:'liste-creanciers',component:ListeCreanciersComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
+  { path:':creancier/liste-creances',component:ListeCreancesComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
+  { path:':creancier/:creance',component:FormulaireCreanceComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
+  { path:'liste-impayes',component:ListeImpayesComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
+  { path:'paiement-validation',component:PaiementValidationComponent ,canActivate:[AuthGuard,PasswordChangeGuard]},
+  { path:'change-password',component:ChangePasswordComponent ,canActivate:[AuthGuard]},
+  { path:'**', pathMatch: 'full', component: PagenotfoundComponent,canActivate:[AuthGuard,PasswordChangeGuard] },
 
 ]
 @NgModule({

@@ -16,6 +16,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { FormsModule } from '@angular/forms';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     ListeCreanciersComponent,
     HomeComponent,
     LoginPageComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
