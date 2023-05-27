@@ -22,8 +22,7 @@ export class FormulaireCreanceComponent {
   constructor(private dataService:DataService,private soapService:DataSoapService,public navigate:Location,private router:Router,private activatedRoute:ActivatedRoute){}
 
   ngOnInit(){
-    console.log(this.dataService.selectedCreancier)
-
+    //if havent selected the creance and creancier ; happens when we enter the url directly (/form)
     if(!this.dataService.selectedCreance || !this.dataService.selectedCreancier){
       this.router.navigate(["liste-creancier"])
     }else{
@@ -31,9 +30,8 @@ export class FormulaireCreanceComponent {
       this.creancier=this.dataService.selectedCreancier
 
       this.soapService.getForms(String(this.creance.id)).subscribe(data=>{
-        console.log("form structure")
         this.formStructure=this.soapService.xml2jsonForms(data);
-        console.log(this.formStructure);
+        console.log("form structure",this.formStructure);
       })
 
     }
@@ -50,7 +48,7 @@ export class FormulaireCreanceComponent {
     });
     if(credentials.length === credentialsInputs.length){
       this.dataService.impayeCredentialsEntered=credentials;
-      console.log(credentials)
+      // console.log(credentials)
       this.router.navigate([`liste-impayes`])
     }
   }

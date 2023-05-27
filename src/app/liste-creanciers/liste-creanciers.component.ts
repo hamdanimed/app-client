@@ -57,29 +57,29 @@ export class ListeCreanciersComponent implements OnInit {
 
 
       this.dataService.fetchedCreanciers=this.listCreancier;
-      console.log(this.dataService.fetchedCreanciers)
+      console.log('fetchedCreanciers :',this.dataService.fetchedCreanciers)
 
     })
     
-    let token = this.authService.getToken()
-    this.http.get('http://localhost:8090/creanciers',{
-      headers: {
-        Authorization:"Bearer "+token
-      }
-    })
-    .subscribe(
-      (data)=> {
-        // console.log(data);
-      },
-      (err)=>{
-        console.log("no data");
-      }
-    )
+    // let token = this.authService.getToken()
+    // this.http.get('http://localhost:8090/creanciers',{
+    //   headers: {
+    //     Authorization:"Bearer "+token
+    //   }
+    // })
+    // .subscribe(
+    //   (data)=> {
+    //     // console.log(data);
+    //   },
+    //   (err)=>{
+    //     console.log("no data");
+    //   }
+    // )
   }
 
   redirectToCreances(creancierId :number){
     // alert(title)
-    console.log(this.dataService.fetchedCreanciers)
+    // console.log(this.dataService.fetchedCreanciers)
     this.dataService.selectedCreancier=this.dataService.fetchedCreanciers.find(creancier=>creancier.id===creancierId)
     this.router.navigate([`liste-creance`],{queryParams:{creancierId:creancierId}})
   }

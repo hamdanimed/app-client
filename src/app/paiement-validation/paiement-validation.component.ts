@@ -11,7 +11,8 @@ import { Impaye } from '../interfaces/Impaye';
   styleUrls: ['./paiement-validation.component.css']
 })
 export class PaiementValidationComponent {
-  date:Date=new Date(1683495264*1000);
+  // date:Date=new Date(1683495264*1000);
+  date:Date=new Date();
   // impayeList:{reference:number,description:string,value:number}[]=[
   //   {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
   //   {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
@@ -45,6 +46,7 @@ export class PaiementValidationComponent {
     // this.router.navigate(['/home'])
   }
 
+
   checkCode(codeInput:any,resultModal:any){
     if(codeInput.value.length){
       console.log(codeInput.value)
@@ -52,6 +54,8 @@ export class PaiementValidationComponent {
       this.verificationModalMsg=this.verificationModalMsg+this.code;
       this.modalService.dismissAll("verification");
       this.modalService.open(resultModal);
+      console.log("solde",this.dataService.client.compteBancaire.solde,this.dataService.client.compteBancaire.solde-this.totalPrice)
+      this.dataService.client.compteBancaire.solde=this.dataService.client.compteBancaire.solde-this.totalPrice;
     }
   }
 }

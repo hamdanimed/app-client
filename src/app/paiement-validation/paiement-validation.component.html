@@ -2,7 +2,7 @@
 <div class="container shadow-lg py-5 px-4 px-sm-5 mb-5 rounded-4">
     <h4 class="fw-bold">Detail de paiement</h4>
     <hr class="border border-1 opacity-25 border-dark">
-    <div class="d-flex flex-wrap px-3 pb-4 column-gap-5 row-gap-3 details">
+    <div class="d-flex flex-wrap px-3 pb-4 column-gap-5 row-gap-3 details" *ngIf="this.dataService.selectedCreancier && this.dataService.selectedCreance && this.dataService.client">
         <div class="pe-1">
             <img src="{{this.dataService.selectedCreancier.logoUrl}}" style="max-height: 60px;max-width: 60px;object-fit: contain;">
         </div>
@@ -16,7 +16,7 @@
         </div>
         <div class="">
             <p class="fs-5 fw-bold mb-1">Débiteur</p>
-            <p class="fs-6 fw-bold m-0 data-color">Hamdani Mohamed</p>
+            <p class="fs-6 fw-bold m-0 data-color">{{this.dataService.client.fname | titlecase}} {{this.dataService.client.lname | titlecase}}</p>
         </div>
         <div class="">
             <p class="fs-5 fw-bold mb-1">Date de Créance</p>
