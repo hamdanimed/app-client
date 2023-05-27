@@ -17,6 +17,12 @@ export class LoginPageComponent {
 
   constructor(public router:Router,private authService:AuthService){}
 
+  ngOnInit(){
+    if(this.authService.isAuthenticated()){
+      this.router.navigate(['home'])
+    }
+  }
+
   submitLogin(){
     console.log(this.form);
     // console.log(this.form);

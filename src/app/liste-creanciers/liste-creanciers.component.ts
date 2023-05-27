@@ -2,9 +2,11 @@ import { Location } from '@angular/common';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataSoapService } from '../services/data-soap/data-soap.service';
+import { DataSoapService } from '../services/data-soap.service';
 import { AuthService } from '../service/auth.service';
 import { EMPTY, catchError } from 'rxjs';
+import { Creancier } from '../interfaces/Creancier';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-liste-creanciers',
@@ -40,40 +42,49 @@ export class ListeCreanciersComponent implements OnInit {
     { url: '../../assets/téléchargement.png', title: 'Image 6' },
     { url: '../../assets/téléchargement.png', title: 'Image 6' },
   ];
-  listCreancier:any[]=[];
+  listCreancier:Creancier[]=[];
 
-  constructor(private route: Router,public navigate:Location,private soapService:DataSoapService,private http:HttpClient,private authService:AuthService){}
+  constructor(private dataService:DataService,private soapService:DataSoapService,private router: Router,public navigate:Location,private http:HttpClient,private authService:AuthService){}
 
   ngOnInit(){
     this.soapService.getCreanciers().subscribe(data=>{
       //converting result to json
-      console.log("list of creancier")
+      // console.log("list of creancier")
       this.listCreancier=this.soapService.xml2jsonCreanciers(data)
+      
       this.listCreancier[0].logoUrl='../../assets/téléchargement.png';
-      this.listCreancier[1].logoUrl='../../assets/Cashplus.jpg';
-      console.log(this.listCreancier)
+      this.listCreancier[1].logoUrl='https://res.cloudinary.com/mohamedham2/image/upload/v1684952517/Jabak_lah-Project/LogoRedal_lonoau.png';
+
+
+      this.dataService.fetchedCreanciers=this.listCreancier;
+      console.log('fetchedCreanciers :',this.dataService.fetchedCreanciers)
 
     })
     
-    let token = this.authService.getToken()
-    this.http.get('http://localhost:8090/creanciers',{
-      headers: {
-        Authorization:"Bearer "+token
-      }
-    })
-    .subscribe(
-      (data)=> {
-        console.log(data);
-      },
-      (err)=>{
-        console.log("no data");
-      }
-    )
+    // let token = this.authService.getToken()
+    // this.http.get('http://localhost:8090/creanciers',{
+    //   headers: {
+    //     Authorization:"Bearer "+token
+    //   }
+    // })
+    // .subscribe(
+    //   (data)=> {
+    //     // console.log(data);
+    //   },
+    //   (err)=>{
+    //     console.log("no data");
+    //   }
+    // )
   }
 
-  redirectToCreances(title :string){
+  redirectToCreances(creancierId :number){
     // alert(title)
-    this.route.navigate([`liste-creance/${title}`])
+    // console.log(this.dataService.fetchedCreanciers)
+    this.dataService.selectedCreancier=this.dataService.fetchedCreanciers.find(creancier=>creancier.id===creancierId)
+    this.router.navigate([`liste-creance`],{queryParams:{creancierId:creancierId}})
+  }
+  back(){
+    this.router.navigate(['home'])
   }
 
 }

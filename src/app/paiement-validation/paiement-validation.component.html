@@ -2,21 +2,21 @@
 <div class="container shadow-lg py-5 px-4 px-sm-5 mb-5 rounded-4">
     <h4 class="fw-bold">Detail de paiement</h4>
     <hr class="border border-1 opacity-25 border-dark">
-    <div class="d-flex flex-wrap px-3 pb-4 column-gap-5 row-gap-3 details">
+    <div class="d-flex flex-wrap px-3 pb-4 column-gap-5 row-gap-3 details" *ngIf="this.dataService.selectedCreancier && this.dataService.selectedCreance && this.dataService.client">
         <div class="pe-1">
-            <img src="https://picsum.photos/60">
+            <img src="{{this.dataService.selectedCreancier.logoUrl}}" style="max-height: 60px;max-width: 60px;object-fit: contain;">
         </div>
         <div class="">
             <p class="fs-5 fw-bold mb-1">Créancier</p>
-            <p class="fs-6 fw-bold m-0 data-color">Maroc Telecom</p>
+            <p class="fs-6 fw-bold m-0 data-color">{{this.dataService.selectedCreancier.name}}</p>
         </div>
         <div class="">
             <p class="fs-5 fw-bold mb-1">Créance</p>
-            <p class="fs-6 fw-bold m-0 data-color">Recharge Voix</p>
+            <p class="fs-6 fw-bold m-0 data-color">{{this.dataService.selectedCreance.name}}</p>
         </div>
         <div class="">
             <p class="fs-5 fw-bold mb-1">Débiteur</p>
-            <p class="fs-6 fw-bold m-0 data-color">Hamdani Mohamed</p>
+            <p class="fs-6 fw-bold m-0 data-color">{{this.dataService.client.fname | titlecase}} {{this.dataService.client.lname | titlecase}}</p>
         </div>
         <div class="">
             <p class="fs-5 fw-bold mb-1">Date de Créance</p>
@@ -36,26 +36,55 @@
             </thead>
             <tbody class="" >
                 <tr *ngFor="let impaye of impayeList">
-                    <td class="fw-semibold">{{impaye.reference}}</td>
-                    <td class="fw-semibold">{{impaye.description}}</td>
-                    <td class="fw-semibold">{{impaye.value}} DH</td>
+                    <td class="fw-semibold">{{impaye.id}}</td>
+                    <td class="fw-semibold">{{impaye.name}}</td>
+                    <td class="fw-semibold">{{impaye.price | currency}}</td>
                 </tr>
             </tbody>
             <tfoot class="">
                 <tr>
                     <th></th>
                     <th class="text-center">Total:</th>
-                    <th>100 DH</th>
+                    <th>{{totalPrice | currency}}</th>
                 </tr>
             </tfoot>
         </table>
     </div>
     <div class="d-flex justify-content-sm-end justify-content-center gap-2 pt-5">
         <button (click)="this.navigate.back()" class="btn btn-outline-secondary">Annuler</button>
-        <button (click)="validate()" class="btn btn-warning fw-semibold"  type="button">Valider</button>
+        <button (click)="openModal(codeEntryModal)" class="btn btn-warning fw-semibold"  type="button">Valider</button>
         <!-- <a class="btn btn-outline-secondary " role="button" type="button">Abondonner la transaction</a> -->
         <!-- <a class="btn btn-warning fw-semibold border border-dark border-1" role="button" type="button">Confirmer et Signer</a> -->
     </div>
 
     
 </div>
+
+<ng-template #codeEntryModal let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title fs-bold text-center">{{"paiement verification" | titlecase}}</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body mt-3 d-flex gap-4 flex-column align-items-center">
+        <h4 class="text-center">Enter the code sent to you by SMS</h4>
+        <input class="form-control w-50" placeholder="code" #codeInput>
+		<button class="btn btn-outline-secondary">Resend the code</button>
+	</div>
+	<div class="modal-footer text-center">
+		<button type="button" class="btn btn-success " (click)="checkCode(codeInput,resultModal)">Validate</button>
+		<button type="button" class="btn btn-danger " (click)="modal.close('Close click')">Close</button>
+	</div>
+</ng-template>
+
+<ng-template #resultModal let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title fs-bold text-center">{{"paiement verification" | titlecase}}</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body mt-3 d-flex gap-4 flex-column align-items-center">
+        <p class="fs-4 text-center">{{verificationModalMsg}}</p>
+	</div>
+	<div class="modal-footer text-center">
+		<button type="button" class="btn btn-danger " (click)="modal.close('Close click')">Close</button>
+	</div>
+</ng-template>

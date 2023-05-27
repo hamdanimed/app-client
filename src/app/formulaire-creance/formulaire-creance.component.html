@@ -1,22 +1,32 @@
 <div class="formulaire-title d-flex align-items-center  flex-column  mt-5 ">
   <h5 class=" text-center">EFFECTUER UN PAIEMENT</h5>
   <!-- card  -->
-  <div class="card rounded-4 mt-3 " >
+  <div class="card rounded-4 mt-3 p-3" >
     <div class="card-body ">
-      <h5 class="card-image text-center py-3 my-3">
+      <!-- <h5 class="card-image text-center py-3 my-3"> -->
+        <!-- </h5> -->
+      <div class="card-image my-3 text-center">  
+          <img src="{{creancier.logoUrl}}" alt="logo image of {{creancier.name}}">
+        </div>
+        <h6 class="creance-title mb-5 text-center ">
+          {{creance.name}}
+        </h6>
+      <!-- <h5 class="card-image text-center py-3 my-3">
         <img src="../../assets/image 4.png" alt="tisalat">
       </h5>
       <h6 class="creance-title mb-5 text-center ">
         Recharge Voix
-      </h6>
-      <form class="form mb-5">
-        <input type="text" id="disabledTextInput" class="form-control w-75 mb-2 " placeholder="Numero de facture">
-        <input type="text" id="disabledTextInput2" class="form-control w-75 " placeholder="Numero de telephone">
+      </h6> -->
+      <form class="form mb-5" #credentialsInputs>
+        <input *ngFor="let champ of formStructure.champs" type="{{champ.type}}" id="champ{{champ.id}}" name="{{champ.name}}" class="form-control w-75 mb-2 " placeholder="{{champ.label | titlecase}}">
+        <!-- <input type="text" id="disabledTextInput" class="form-control w-75 mb-2 " placeholder="Numero de facture">
+        <input type="text" id="disabledTextInput2" class="form-control w-75 " placeholder="Numero de telephone"> -->
       </form >
       <div class="button-place text-end p-1 mt-3 pt-5  ">
-        <button (click)="this.navigate.back()" class="btn btn-outline-secondary ">Annuler</button>
+        <button (click)="back()" class="btn btn-outline-secondary ">Annuler</button>
+        <button (click)="redirectToListeImpaye(credentialsInputs)" class="btn btn-warning mx-2">Valider</button>
         <!-- <a href="#" class="btn btn-outline-secondary  button">Annuler</a> -->
-        <a routerLink="/liste-impayes" class="btn btn-warning mx-2 button">Valider</a>
+        <!-- <a routerLink="/liste-impayes" class="btn btn-warning mx-2 button">Valider</a> -->
       </div>
     </div>
   </div>

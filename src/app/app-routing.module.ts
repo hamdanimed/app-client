@@ -19,6 +19,7 @@ const routes: Routes=[
   { path:'',pathMatch:'full',redirectTo:'login' },
   { path:'login',component:LoginPageComponent},
   
+<<<<<<< HEAD
   { path:'home',component:HomeComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
   { path:'liste-creanciers',component:ListeCreanciersComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
   { path:':creancier/liste-creances',component:ListeCreancesComponent,canActivate:[AuthGuard,PasswordChangeGuard]},
@@ -27,6 +28,15 @@ const routes: Routes=[
   { path:'paiement-validation',component:PaiementValidationComponent ,canActivate:[AuthGuard,PasswordChangeGuard]},
   { path:'change-password',component:ChangePasswordComponent ,canActivate:[AuthGuard]},
   { path:'**', pathMatch: 'full', component: PagenotfoundComponent,canActivate:[AuthGuard,PasswordChangeGuard] },
+=======
+  { path:'home',component:HomeComponent,canActivate:[AuthGuard]},
+  { path:'liste-creancier',component:ListeCreanciersComponent,canActivate:[AuthGuard]},
+  { path:'liste-creance',component:ListeCreancesComponent,canActivate:[AuthGuard]},
+  { path:'form',component:FormulaireCreanceComponent,canActivate:[AuthGuard]},
+  { path:'liste-impayes',component:ListeImpayesComponent,canActivate:[AuthGuard]},
+  { path:'paiement-validation',component:PaiementValidationComponent,canActivate:[AuthGuard]},
+  { path:'**', pathMatch: 'full', component: PagenotfoundComponent,canActivate:[AuthGuard]},
+>>>>>>> hamdani
 
 ]
 @NgModule({

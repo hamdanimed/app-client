@@ -4,20 +4,21 @@
   <div class="card mt-3 rounded-4" >
     <div class="card-body" >
       <ul class="creance-list mt-5 px-4 py-1  "style="height: 280px; overflow-y:auto" >
-        <li class="form-check list-position my-2  " style="display: flex; align-items: center; gap: 25px;" *ngFor="let Imp of ImpayesList">
+        <li class="form-check list-position my-2  " style="display: flex; align-items: center; gap: 25px;" *ngFor="let Imp of listImpaye">
           <!-- <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> -->
           <input class="form-check-input" (change)="toggleImpaye(Imp)" type="checkbox" name="impaye-{{Imp.id}}" id="impaye-{{Imp.id}}">
           <label class="creance-item row "  for="impaye-{{Imp.id}}">
             <span class="creance-date col-md-3 p-0"> {{Imp.date}}</span>
             <span class="creance-name  col-md-4 p-0">{{Imp.name}}</span>
-            <span class="creance-price attribute p-0 col-md-5 text-md-end text-sm-start ">{{Imp.price}}</span>
+            <span class="creance-price attribute p-0 col-md-5 text-md-end text-sm-start ">{{Imp.price | currency}}</span>
           </label>
         </li>
       </ul>
       <div class="button-place text-end pe-1 mt-5">
-        <button (click)="this.navigate.back()" class="btn btn-outline-secondary me-2">Annuler</button>
+        <button (click)="back()" class="btn btn-outline-secondary me-2">Annuler</button>
+        <button (click)="redirectToValidatePaiement()" class="btn btn-warning">Payer</button>
         <!-- <a href="#" class="btn btn-outline-secondary me-2 button">annuler</a> -->
-        <a routerLink="/paiement-validation" (click)="printImpayesToPaye()" class="btn btn-warning button">Payer</a>
+        <!-- <a routerLink="/paiement-validation" (click)="printImpayesToPaye()" class="btn btn-warning button">Payer</a> -->
       </div>
     </div>
   </div>
