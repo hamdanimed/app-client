@@ -50,6 +50,8 @@ export class FormulaireCreanceComponent {
       this.dataService.impayeCredentialsEntered=credentials;
       // console.log(credentials)
       this.router.navigate([`liste-impayes`])
+    }else{
+      console.log("enter all credentials")
     }
   }
 

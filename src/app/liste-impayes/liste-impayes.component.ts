@@ -48,6 +48,7 @@ export class ListeImpayesComponent {
 
   listImpaye:Impaye[]=[];
   impayesToPaye:Impaye[]=[];
+  gotResponse:boolean=false;
 
   constructor(private dataService:DataService,private soapService:DataSoapService,public navigate:Location,private router:Router){}
 
@@ -60,8 +61,19 @@ export class ListeImpayesComponent {
       // let credentials:ImpayeCredential[]=[{name:"email",value:"hamza@gmail.com"},{name:"invoice-number",value:"192168"}];
   
       this.soapService.getImpayes(selectedCreanceId,credentials).subscribe(data=>{
+          this.gotResponse=true;
           let impayes=this.soapService.xml2jsonImpayes(data);
+
+          if(impayes.length===0){
+            console.log("wrong credentials");
+            this.navigate.back();
+            return ;
+          }
+          
           this.listImpaye=impayes.filter(impaye=>{return !impaye.isPaid});
+          if(this.listImpaye.length===0){
+            console.log("Everything is paid");
+          }
       })
     }
   }
