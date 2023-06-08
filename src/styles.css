@@ -6,3 +6,4 @@
 /* body{
   background-color: #ececec;
 } */
+@import 'ngx-toastr/toastr';

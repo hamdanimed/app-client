@@ -6,6 +6,7 @@ import { Creance } from '../interfaces/Creance';
 import { Creancier } from '../interfaces/Creancier';
 import { DataService } from '../services/data.service';
 import { ImpayeCredential } from '../interfaces/ImpayeCredential';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-formulaire-creance',
@@ -19,7 +20,7 @@ export class FormulaireCreanceComponent {
   creancier:Creancier={id:0,code:"",name:"",logoUrl:""};
 
   formStructure:any={};
-  constructor(private dataService:DataService,private soapService:DataSoapService,public navigate:Location,private router:Router,private activatedRoute:ActivatedRoute){}
+  constructor(private dataService:DataService,private soapService:DataSoapService,private toastr:ToastrService,public navigate:Location,private router:Router,private activatedRoute:ActivatedRoute){}
 
   ngOnInit(){
     //if havent selected the creance and creancier ; happens when we enter the url directly (/form)
@@ -37,8 +38,11 @@ export class FormulaireCreanceComponent {
     }
 
   }
+  
 
   redirectToListeImpaye(inputs:HTMLFormElement){
+    
+
     let credentials:ImpayeCredential[]=[];
     let credentialsInputs:any[]=Array.from(inputs.getElementsByTagName("input"));
     credentialsInputs.forEach(element => {
@@ -51,6 +55,7 @@ export class FormulaireCreanceComponent {
       // console.log(credentials)
       this.router.navigate([`liste-impayes`])
     }else{
+      this.toastr.warning("Champs manquants")
       console.log("enter all credentials")
     }
   }

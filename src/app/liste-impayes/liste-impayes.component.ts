@@ -5,6 +5,7 @@ import { DataSoapService } from '../services/data-soap.service';
 import { DataService } from '../services/data.service';
 import { ImpayeCredential } from '../interfaces/ImpayeCredential';
 import { Impaye } from '../interfaces/Impaye';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-liste-impayes',
@@ -50,7 +51,7 @@ export class ListeImpayesComponent {
   impayesToPaye:Impaye[]=[];
   gotResponse:boolean=false;
 
-  constructor(private dataService:DataService,private soapService:DataSoapService,public navigate:Location,private router:Router){}
+  constructor(private dataService:DataService,private soapService:DataSoapService,private toastr:ToastrService,public navigate:Location,private router:Router){}
 
   ngOnInit(){
     if(!this.dataService.selectedCreance || !this.dataService.impayeCredentialsEntered.length){
@@ -65,6 +66,7 @@ export class ListeImpayesComponent {
           let impayes=this.soapService.xml2jsonImpayes(data);
 
           if(impayes.length===0){
+            this.toastr.warning("Les informations saisies ne sont pas correctes")
             console.log("wrong credentials");
             this.navigate.back();
             return ;
@@ -94,6 +96,9 @@ export class ListeImpayesComponent {
     if(this.impayesToPaye.length !== 0){
       this.dataService.ImpayeToPaye=this.impayesToPaye;
       this.router.navigate(['paiement-validation'])
+    }
+    else{
+      this.toastr.warning("Veuillez sélectionner au moins un impayé")
     }
   }
   back(){

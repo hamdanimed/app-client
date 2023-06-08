@@ -22,21 +22,7 @@ export class AuthService {
   
 
   login(form:LoginBody){
-    this.http.post<LoginResponse>("http://localhost:8090/client/auth/authenticate",form).subscribe(
-      (data) =>{
-        console.log(data)
-        localStorage.setItem("token",data.token)
-        localStorage.setItem("refreshToken",data.refreshToken)
-        this.router.navigateByUrl('/home')
-        console.log(this.jwtService.decodeToken(data.token));
-      } ,
-        
-      (err:HttpErrorResponse) =>{
-        console.log("login error");
-        console.log(err);
-  
-      }
-    )
+    return this.http.post<LoginResponse>("http://localhost:8090/client/auth/authenticate",form)
   }
 
   refreshLogin():Observable<HttpEvent<any>>{
