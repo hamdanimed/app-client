@@ -25,6 +25,10 @@ export class ChangePasswordComponent implements OnInit{
     // console.log(this.form);
     this.authService.changePassword(this.form)
   }
+  logout(){
+    this.authService.logout()
+    this.router.navigateByUrl("/")
+  }
 
 
 
