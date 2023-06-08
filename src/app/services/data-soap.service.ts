@@ -73,6 +73,23 @@ export class DataSoapService {
     return this.http.post(this.url,raw,{headers: new HttpHeaders({'Content-Type':'text/xml'}),responseType:'text'})
   }
 
+  confirmerPayement(impayes:number[],clientId:number,code:string){
+    let raw = `<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ConfirmerPayementRequest xmlns="http://www.jl_entities.com/creancierservice">`
+    impayes.forEach(id=> raw+=`<impayes>${id}</impayes>`)
+    raw+=`<clientId>${clientId}</clientId>`
+    raw+=`<code>${code}</code>`
+    raw+=`</ConfirmerPayementRequest></soap:Body></soap:Envelope>`
+    return this.http.post(this.url,raw,{headers: new HttpHeaders({'Content-Type':'text/xml'}),responseType:'text'})
+  }
+
+
+  xml2jsonMessage(data:string){
+    let parser = new DOMParser();
+    let xmlDoc = parser.parseFromString(data, "text/xml");
+    let message = xmlDoc.getElementsByTagName("ns2:value")[0] .childNodes[0].nodeValue
+    return {message:message}
+  }
+
   xml2jsonImpayes(data:string){
     let parser = new DOMParser();
     let xmlDoc = parser.parseFromString(data, "text/xml");
