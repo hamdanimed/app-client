@@ -40,7 +40,7 @@
                     <td class="fw-semibold">{{impaye.name}}</td>
                     <td class="fw-semibold">{{impaye.price |currency:'':'':'1.2-2'}} DH</td>
                 </tr>
-                <tr *ngIf="this.dataService.retardImpaye !== null">
+                <tr *ngIf="this.dataService.retardImpaye !== null && this.dataService.retardImpaye !== undefined ">
                     <th></th>
                     <th>Penalite de retard</th>
                     <th class="fw-semibold">{{this.dataService.retardImpaye.price * 100}}%</th>
