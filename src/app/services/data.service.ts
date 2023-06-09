@@ -22,11 +22,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
     constructor(private http:HttpClient) { }
 
     getClient(tel:string){
-      return this.http.post("http://localhost:8090/api/client",tel)
+      return this.http.post("https://jabak-lah-backend.onrender.com/api/client",tel)
     }
 
     sendSMS(clientId:number,phone:string){
       phone = '212'+phone.substring(1)
-      return this.http.post("http://localhost:8090/api/sendfakesms",{clientId:clientId,destinationSMSNumber:phone})
+      return this.http.post("https://jabak-lah-backend.onrender.com/api/sendfakesms",{clientId:clientId,destinationSMSNumber:phone})
     }
   }
