@@ -3,5 +3,6 @@ export interface Impaye{
     name:string,
     price:number,
     isPaid:boolean,
-    date:number
+    date:number,
+    type:string,
 }

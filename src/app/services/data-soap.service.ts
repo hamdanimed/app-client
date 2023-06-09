@@ -98,12 +98,13 @@ export class DataSoapService {
 
     listImpayeXML.forEach(impaye=>{
       // let impayeJson:{id:string,name:string,price:number,isPaid:boolean,date:string}={id:"",name:"",price:0,isPaid:false,date:"10/10/2023"};
-      let impayeJson:Impaye={id:0,name:"",price:0,isPaid:false,date:0};
+      let impayeJson:Impaye={id:0,name:"",price:0,isPaid:false,type:"",date:0};
 
       impayeJson.id=Number(impaye.getElementsByTagName("ns2:id")[0].childNodes[0].nodeValue as string);
       impayeJson.name=impaye.getElementsByTagName("ns2:name")[0].childNodes[0].nodeValue as string;
       impayeJson.price=Number(impaye.getElementsByTagName("ns2:price")[0].childNodes[0].nodeValue as string);
       impayeJson.date=Number(impaye.getElementsByTagName("ns2:date")[0].childNodes[0].nodeValue as string);
+      impayeJson.type=impaye.getElementsByTagName("ns2:type")[0].childNodes[0].nodeValue as string;
       let isPaidTemp=impaye.getElementsByTagName("ns2:isPaid")[0].childNodes[0].nodeValue as string;
       impayeJson.isPaid=isPaidTemp==="false"?false:true;
 

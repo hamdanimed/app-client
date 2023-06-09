@@ -40,7 +40,8 @@ export class ListeImpayesComponent {
             return ;
           }
           
-          this.listImpaye=impayes.filter(impaye=>{return !impaye.isPaid});
+          this.listImpaye=impayes.filter(impaye=>{return !impaye.isPaid && impaye.type==="simple"});
+          this.dataService.retardImpaye=impayes.filter(impaye=>{return impaye.type==="retard"});
           if(this.listImpaye.length===0){
             console.log("Everything is paid");
           }
