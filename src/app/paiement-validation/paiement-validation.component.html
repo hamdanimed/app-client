@@ -38,7 +38,7 @@
                 <tr *ngFor="let impaye of impayeList">
                     <td class="fw-semibold">{{impaye.id}}</td>
                     <td class="fw-semibold">{{impaye.name}}</td>
-                    <td class="fw-semibold">{{impaye.price | currency}}</td>
+                    <td class="fw-semibold">{{impaye.price |currency:'':'':'1.2-2'}} DH</td>
                 </tr>
                 <tr *ngIf="this.dataService.retardImpaye !== null">
                     <th></th>
