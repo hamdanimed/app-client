@@ -31,6 +31,7 @@ export class ListeImpayesComponent {
       this.soapService.getImpayes(selectedCreanceId,credentials).subscribe(data=>{
           this.gotResponse=true;
           let impayes=this.soapService.xml2jsonImpayes(data);
+          console.log(impayes)
 
           if(impayes.length===0){
             this.toastr.warning("Les informations saisies ne sont pas correctes")

@@ -80,9 +80,10 @@ export class PaiementValidationComponent {
           this.code=codeInput.value;
           this.verificationModalMsg=this.verificationModalMsg+this.code;
           this.modalService.dismissAll("verification");
-          this.modalService.open(resultModal);
+          // this.modalService.open(resultModal);
           console.log("solde",this.dataService.client.compteBancaire.solde,this.dataService.client.compteBancaire.solde-this.totalPrice)
           this.dataService.client.compteBancaire.solde=this.dataService.client.compteBancaire.solde-this.totalPrice;
+          this.router.navigate(['/']);
         }
         else{
           let message = response.message||'Erreur inconnue'
