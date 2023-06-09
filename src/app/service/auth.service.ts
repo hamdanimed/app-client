@@ -22,12 +22,12 @@ export class AuthService {
   
 
   login(form:LoginBody){
-    return this.http.post<LoginResponse>("http://localhost:8090/client/auth/authenticate",form)
+    return this.http.post<LoginResponse>("https://jabak-lah-backend.onrender.com/client/auth/authenticate",form)
   }
 
   refreshLogin():Observable<HttpEvent<any>>{
     let refreshToken = localStorage.getItem('refreshToken')|| '';
-    return this.http.post<HttpEvent<any>>("http://localhost:8090/client/auth/refresh",{token:refreshToken})
+    return this.http.post<HttpEvent<any>>("https://jabak-lah-backend.onrender.com/client/auth/refresh",{token:refreshToken})
     
   }
 
@@ -50,7 +50,7 @@ export class AuthService {
   }
 
   changePassword(body:LoginBody){
-    this.http.post("http://localhost:8090/client/auth/change-password",body,{
+    this.http.post("https://jabak-lah-backend.onrender.com/client/auth/change-password",body,{
       headers:{
         Authorization:`Bearer ${this.getToken()}`
       }
@@ -64,7 +64,7 @@ export class AuthService {
   }
   getIsPasswordChanged():Observable<boolean>{
     let username = this.getUsername()
-    return this.http.post<boolean>("http://localhost:8090/client/auth/is-password-changed",{username:username},{
+    return this.http.post<boolean>("https://jabak-lah-backend.onrender.com/client/auth/is-password-changed",{username:username},{
       headers:{
         Authorization:`Bearer ${this.getToken()}`
       }
