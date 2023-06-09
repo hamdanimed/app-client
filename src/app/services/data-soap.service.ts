@@ -10,7 +10,8 @@ import { Impaye } from '../interfaces/Impaye';
 export class DataSoapService {
 
   constructor(private http:HttpClient) { }
-  private url='http:localhost:8090/ws/creanciers.wsdl';
+  // private url='http:localhost:8090/ws/creanciers.wsdl';
+  private url='https://jabak-lah-backend.onrender.com/ws/creanciers.wsdl';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type':'text/xml'}),responseType:'text'

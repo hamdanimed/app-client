@@ -30,8 +30,8 @@ export class PaiementValidationComponent {
       this.impayeList.forEach(impaye=>{
         this.totalPrice+=impaye.price;
       })
-      console.log(this.dataService.retardImpaye);
-      console.log(this.dataService.retardImpaye.price);
+      // console.log(this.dataService.retardImpaye);
+      // console.log(this.dataService.retardImpaye.price);
       this.totalPrice*=(1+this.dataService.retardImpaye.price);
     }
   }
