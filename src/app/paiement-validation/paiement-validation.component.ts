@@ -13,24 +13,14 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./paiement-validation.component.css']
 })
 export class PaiementValidationComponent {
-  // date:Date=new Date(1683495264*1000);
+
   date:Date=new Date();
-  // impayeList:{reference:number,description:string,value:number}[]=[
-  //   {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
-  //   {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
-  //   {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
-  //   {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
-  //   {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
-  //   {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
-  //   {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
-  //   {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
-  //   {reference:1000000,description:"Recharge Voix-21/04/2023",value:100},
-  // ];
 
   impayeList:Impaye[]=[];
   verificationModalMsg:string="Paiment Validated ✅ \n Validation Failed ❌\n";
   code:string="";
   totalPrice:number=0;
+
   constructor(public dataService:DataService,private soapService:DataSoapService,private toastr:ToastrService,private modalService:NgbModal,public navigate:Location,private router:Router){}
   ngOnInit(){
     if(!this.dataService.ImpayeToPaye.length){

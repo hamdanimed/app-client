@@ -40,6 +40,11 @@
                     <td class="fw-semibold">{{impaye.name}}</td>
                     <td class="fw-semibold">{{impaye.price | currency}}</td>
                 </tr>
+                <tr *ngIf="this.dataService.retardImpaye">
+                    <th></th>
+                    <th>Penalite de retard</th>
+                    <th>{{this.dataService.retardImpaye.price}}</th>
+                </tr>
             </tbody>
             <tfoot class="">
                 <tr>
