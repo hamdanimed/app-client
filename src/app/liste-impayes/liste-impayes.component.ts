@@ -41,7 +41,6 @@ export class ListeImpayesComponent {
           }
           
           this.listImpaye=impayes.filter(impaye=>{return !impaye.isPaid && impaye.type==="simple"});
-          console.log(impayes.filter(impaye=>{return impaye.type==="penalite"}));
           this.dataService.retardImpaye=impayes.filter(impaye=>{return impaye.type==="penalite"});
           if(this.listImpaye.length===0){
             console.log("Everything is paid");
