@@ -10,7 +10,7 @@ import { Impaye } from '../interfaces/Impaye';
 export class DataSoapService {
 
   constructor(private http:HttpClient) { }
-  private url='/ws/creanciers.wsdl';
+  private url='localhost:8090/ws/creanciers.wsdl';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type':'text/xml'}),responseType:'text'
