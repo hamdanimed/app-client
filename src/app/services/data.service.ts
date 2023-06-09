@@ -17,7 +17,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
     impayeCredentialsEntered:ImpayeCredential[]=[];
     listImpaye:any[]=[];
     ImpayeToPaye:any[]=[];
-    retardImpaye:any;
+    retardImpaye:any=null;
 
     constructor(private http:HttpClient) { }
 

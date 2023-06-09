@@ -43,7 +43,7 @@
                 <tr *ngIf="this.dataService.retardImpaye">
                     <th></th>
                     <th>Penalite de retard</th>
-                    <th>{{this.dataService.retardImpaye.price}}</th>
+                    <th class="fw-semibold">{{this.dataService.retardImpaye.price * 100}}%</th>
                 </tr>
             </tbody>
             <tfoot class="">
